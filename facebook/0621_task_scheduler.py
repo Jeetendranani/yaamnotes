@@ -327,6 +327,14 @@ unfinished tasks drops to zero, join() unblocks.
 num_worker_threads = 10
 
 
+def do_work():
+    pass
+
+
+def source():
+    pass
+
+
 def worker():
     while True:
         item = q.get()
@@ -355,3 +363,138 @@ for i in range(num_worker_threads):
     q.put(None)
 for t in threads:
     t.join()
+
+
+"""
+Built-in Functions:
+The python interpreter hs a number of functions and types built into it that are always available. they are listed here 
+in alphabetical order.
+abs()
+all()
+any()
+ascii()
+bin()
+bool()
+byterarray()
+bytes()
+callable()
+chr()
+classmethod()
+compile()
+complex()
+delattr()
+dict()
+dir()
+divmod()
+enumerate()
+eval()
+exec()
+filter()
+float()
+format()
+frozenset()
+getattr()
+globals()
+hasattr()
+hash()
+help()
+hex()
+id()
+input()
+int()
+isinstance()
+issubclass()
+iter()
+len()
+locals()
+map()
+max()
+memoryview()
+min()
+next()
+object()
+oct()
+open()
+ord()
+pow()
+print()
+property()
+range()
+repr()
+reversed()
+round()
+set()
+setattr()
+slice()
+sorted()
+staticmethod()
+str()
+sum()
+super()
+tuple()
+type()
+vars()
+zip()
+__import__()
+
+abs(x)
+
+all(iterable)
+Return True if all elments of iterable are true (of if the iterable is empty). Equivalent to:
+"""
+
+
+def all1(iterable):
+    for element in iterable:
+        if not element:
+            return False
+    return True
+
+
+"""
+any(iterable)
+Return True if any element of the iterable is true. If the iterable is empty return False. Equivalent to:
+"""
+
+
+def any1(iterable):
+    for element in iterable:
+        if element:
+            return True
+    return False
+
+
+"""
+ascii(object)
+As repr(), return a string containing a printable representation of an object, but escape the non-ASCII characters in 
+the string returned by repr() using \x, \u or \U escapes. This generates a string similar to that returned by repr()
+in Python 2.
+
+bin(x)
+Convert an integer number to a binary string prefixed with "0b". The result is a valid Python expression. if x is not 
+a Python int object, it has to define an __index__() method that returns an integer. Some examples: 
+If prefix '0b' is desired or not, you can use either of the following ways.
+>>> format(14, '#b'), format(14, 'b')
+or 
+>>> f'{14:#b}', f'{14:b}'
+
+class bool([x])
+Return a Boolean value, i.e. one of True or False. X is converted using the standard truth testing procedure. if x is 
+false or omitted, this return False; otherwise it returns True. The bool class is a subclass of int (see Numeric Types 
+- int, float, complex). It can't be subclassed further. Its only instance are False and True (see Boolean Values).
+
+class bytearray()
+Return a new array of bytes. the bytearray class is a nutable equence of integers in the range 0 <= x < 256. It has 
+most of the usual methods of mutable sequences, described in Mutable Sequences Types. as well as most methods that the 
+bytes type has, see Bytes and Bytearray Operations.
+
+The optional source parameter can be used to initialize the array in a few different ways:
+- if it is string, you must also give the encoding (and optionally, errors) parameters; bytearray() then converts the 
+string to bytes using str.encode().
+- If it is an integer, the array will have that size and will be initialized with null bytes.
+- If it is an object conforming to the buffer interface, a read-only buffer of the object will be userd to initialize 
+the bytes array.
+- If it is an iterable, it must be an iterable of integers in the range 0 <= x < 256, which are used as the initial 
+content of the array.
+Without an argument, an array of size 0 is created.
+"""
