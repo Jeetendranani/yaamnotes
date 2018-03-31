@@ -42,7 +42,7 @@ def intersect(nums1, nums2):
     for i in nums2:
         if i in num_set.keys():
             res.append(i)
-            num_set[i] _= 1
+            num_set[i] -= 1
             if num_set[i] == 0:
                 del num_set[i]
     return res
@@ -444,7 +444,7 @@ the enclosing quotes and by printing escaped and special characters:
 If you don't want character prefaced by \ to be interpreted as special characters, you can use raw strings by adding 
 an r before the first quote:
 
-String literals can span multiple lines. One way is using triple-quotes: """...""" or '''...'''. End of lines are 
+String literals can span multiple lines. One way is using triple-quotes: """r'...'""" or '''...'''. End of lines are 
 automatically included in the string, but it's possible to prevent this by adding a \ at the end of the line. The 
 following example:
 
@@ -501,7 +501,7 @@ The built-in function len() returns the length of string:
 See also:
 
 Text Sequence Type - str
-    Strings are exampes of sequence types, and support the common operations supported by such types.
+    Strings are example of sequence types, and support the common operations supported by such types.
     
 String Methods
     String support a large number of methods for basic transformations and searching.
@@ -510,6 +510,6 @@ Format String Syntax
     Information about string formatting with str.format()
     
 printf-style String Formatting
-    The old formatting operations invoked when strings are the left operand of the % operator are descripted in more 
+    The old formatting operations invoked when strings are the left operand of the % operator are described in more 
     detail here.    
 """
