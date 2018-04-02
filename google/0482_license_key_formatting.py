@@ -374,5 +374,139 @@ the contents of the namespace created by the class definition; we'll learn more 
 The original local scope (the one in effect just before the class definition was entered) is reinstated, and the class
 object is bound here to the class name given in the class definition header (ClassName in the example).
 
+9.3.2. Class Objects
 
+Class objects support two kinds of operations: attribute references and instantiation.
+
+Attribute references use the standard syntax used for all attribute references in Python: obj.name. Valid attribute
+names are all the names that were in the class's namespaces when the class object was created. So, if the class 
+definition looked like this:
+"""
+
+
+class MyClass:
+    """A simple example class"""
+    i = 12345
+
+    def f(self):
+        return 'Hello world'
+
+
+"""
+then MyClass.i and MyClass.f are valid attribute references, returning an integer and a function object, respectively.
+Class attributes can also be assigned to, so you cna change the value of MyClass.i by assignment. __doc__ is also a 
+valid attribute, returnint the docstring belonging to the class: "A simple example class".
+
+Class instantiation uses function notation. Just pretend that the class object is a parameter-less function that 
+returns a new instance of the class. For example (assuming the above class):
+"""
+
+
+x = MyClass()
+
+
+"""
+create a new instance of the class and assigns this object to the local variable x.
+
+The instantiation operation ("calling" a class object) create an empty object. Many classes like to create objects with
+instances customized to a specific initial state. Therefore a class may define a special method named __init__(), like
+this:
+"""
+
+    def __init__(self):
+        self.data = []
+
+
+"""
+when a class defines an __init__() method, class instantiation automatically invokes __init__() for the newly-created
+class instance. So in this example, a new, initialized instance can be obtained by:
+
+x = MyClass()
+
+Of course, the __init__() method may have arguments for greater flexibility. In that case, arguments given to the class
+instantiation operator are passed on to __init__(). For example,
+"""
+
+
+class Complex:
+    def __init__(self, realpart, imagpart):
+        self.r = realpart
+        self.i = imagpart
+
+
+x = Complex(3.0, -4.5)
+
+
+"""
+9.3.3. Instance Objects
+
+Now what can we do with instance object? the only operations understood by instance object are attribute references.
+There are two kinds of valid attribute names, data attributes and methods.
+
+Data attributes correspond to "instance variables" in Smalltalk, and to "data members" in C++. Data attributes need 
+not be declared; like local variables, they spring into existence when they are first assigned to. For example, if x
+is the instance of MyClass created above, the following piece of code will print the value 16, without leaving a trace:
+
+The other kind of instance attribute reference is a method. A method is a function that "belongs to" an object. (In
+Python, the term method is not unique to class instances: other object types can have methods as well. for example, 
+list objects have methods called append, insert, remove, sort, and so on. However, in the following discussion, we'll
+use hte term method exclusively to mean methods of class instance objects, unless explicitly stated otherwise.)
+
+Valid method names of an instance object depend on its class. By definition, all attributes of a class that are 
+function objects define corresponding methods of its instances. So in our example, x.f is a valid method reference, 
+since MyClass.f is a function, but x.i is not, since MyClass.i is not, but .f is not the same thing as MyClass.f - it
+is a method object, not a function object.
+
+9.3.4. Method Objects
+
+Usually, a method is called right after it is bound:
+
+x.f()
+
+In the MyClass example, this will return the string "hello world". However, it is not necessary to call a method right 
+away: x.f is a method object, and can be stored away and called at a later time. For example:
+
+xf = x.f
+while True:
+    print(xf())
+    
+will continue to print hello world until the end of time.
+
+What exactly happens when a method is called? You may have noticed that x.f() was called without an argument above, 
+even though the function definition for f() specified an argument. what happened to the argument? Surely Python raises 
+an exception when a function that requires an argument is called without any - even if the argument isn't actually 
+used...
+
+Actually, you may have guessed the answer: the special thing about methods is that the instance object is passed as the
+first argument of the function. In our example, the call x.f() is exactly equivalent to MyClass.f(x). In general, 
+calling a method with a list of n arguments is equivalent to calling the corresponding function with an argument list
+that is created by inserting the method's instance object before the first argument.
+
+If you still don't understand how methods work, a look at the implementation can perhaps clarify matters. When an 
+instance attribute is referenced that isn't a data attribute, its class is searched. If the name denotes a valid class
+attribute that is a function object, a method object is created by packing (pointers to) the instance object and the 
+function object just found together in an abstract object: this is the method object. when the method objects is called
+with an argument list, a new argument list is constructed from the instance object and the argument list, and the 
+function object is called with this new argument list.
+
+9.3.5. Class and instance variables
+
+Generally speaking, instance variables are for data unique to each instance and class variables are for attributes and 
+methods shared by all instances of the class.
+"""
+
+
+class Dog:
+    kind = 'canine'
+
+    def __init__(self, name):
+        self.name = name
+
+
+"""
+As discussed in A word about names and objects, shared data can have possibly surprising effects with involving mutable
+objects such as lists and dictionaries. For example, the tricks list in the following code should not be used as a 
+class variable just a single list would be shared by all Dog instances:
+
+Correct design of the class should use an instance variable instead:
 """
