@@ -42,7 +42,7 @@ class Solution:
         new_str = ''.join(s_list)
         new_list = []
 
-        while len(new_str) > k:
+        while len(new_str) > K:
             new_list.insert(0, new_str[-K:])
             new_str = new_str[:len(new_str) - K]
         new_list.insert(0, new_str)
@@ -413,8 +413,8 @@ instances customized to a specific initial state. Therefore a class may define a
 this:
 """
 
-    def __init__(self):
-        self.data = []
+def __init__(self):
+    self.data = []
 
 
 """
