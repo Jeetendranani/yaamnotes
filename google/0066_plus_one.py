@@ -112,7 +112,7 @@ class AsyncZip(threading.Thread):
         self.outfile = outfile
 
     def run(self):
-        f = zipfile.ZipFile(self.outfile, 'w' zipfile.ZIP_DEFLATED)
+        f = zipfile.ZipFile(self.outfile, 'w', zipfile.ZIP_DEFLATED)
         f.write(self.infile)
         f.close()
         print('Finished background zip of :', self.infile)
