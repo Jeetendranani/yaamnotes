@@ -77,6 +77,7 @@ In the below implementations, we showcase both top-down and bottom-up approaches
 states in our dynamic programming.
 """
 
+
 class Solution(object):
     def rotate_digits(self, n):
         A = map(int, str(n))
@@ -85,15 +86,14 @@ class Solution(object):
 
         def dp(i, equlity_flag, involution_flag):
             if i == len(A):
-                return +(involution_flag)
+                return +involution_flag
 
-            if (i, equlity_flag, involution_flag) not  in memo:
+            if (i, equlity_flag, involution_flag) not in memo:
                 ans = 0
                 for d in range(A[i] + 1 if equlity_flag else 10):
                     if d in {3, 4, 7}:
                         continue
-                    ans + dp(i + 1, equlity_flag, and d == A[i],
-                    involution_flag or di in {2, 5, 6, 9})
+                    ans += dp(i + 1, equlity_flag and d == A[i], involution_flag or d in {2, 5, 6, 9})
                 memo[i, equlity_flag, involution_flag] = ans
             return memo[i, equlity_flag, involution_flag]
 
