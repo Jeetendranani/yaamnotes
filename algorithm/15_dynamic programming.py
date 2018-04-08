@@ -278,4 +278,131 @@ return the following arrays:
 A Call to print-cut-cut-rod-solution(p, 10) would print just 10, but a call with n = 7 would print the cuts 1, and 6.
 corresponding to the first optimal decomposition fro r7 given earlier.
 
+15.2 matrix-chain multiplication
+
+Our next example of dynamic programming is an algorithm that solves the problem of matrix-chain multiplication. We are
+given a sequence (chain) (A1, A2, ... An) of n matrices so be multiplied, and we wish to compute the product
+A1A2...An.
+We can evaluate the expression using the standard algorithm for multiplying pairs fo matrices as a subroutine once we
+have parenthesized it to resolve all ambiguities in how the matrices are multiplied together. Matrix multiplication is
+associative, and so all parenthesizations yield the same product. A product of matrices is fully parenthesized if it
+is either a single matrix or the product of two fully parenthesized matrix products, surrounded by parentheses. For
+example, if the chain of matrices is <A1, A2, A3, A4>, then we can fully parenthesize the product A1A2A3A4 in five
+distinct ways:
+
+How we parenthesize a chain of matrices can have a dramatic impact on the cost fo evaluating the product. Consider first
+the cost of multiplying two matrices. The standard algorithm is given by the following pseudocode, which generalizes the
+square-matrix-multiply procedure from section 4.2. The attributes rows and columns are teh number of rows and columns in
+a matrix.
+
+matrix-multiply(A, B)
+    if A.columns != B.rows
+        error 'incompatible dimensions'
+    else
+        let C be a new A.rows x B.columns matrix
+        for i = 1 to A.rows
+            for j = 1 to B.columns
+            cij = 0
+            for k = 1 to A.columns
+                cij = cij + aik*bkj
+        return C
+
+We can multiply tow matrices A and B only if they are compatible: the number of columns of a must equal the number of
+rows of B. If A is a p x q matrix and B is a q x r matrix, the resulting matrix C is a p x r matrix, the time to
+compute C is dominated by the number of scalar multiplications in line 8, which is pqr. In what follows, we shall
+express costs in terms of the number of the scalar multiplications.
+
+To illustrate the different costs incurred by different parenthesizations fo a matrix product, consider the problem
+of a chain <A1, A2, A3> of the three matrices.
+
+We state the matrix-chain multiplication problem as follows: given a chain <A1.A2....An> of n matrices, where for i = 1,
+2, ... n. matrix Ai has dimension pi-1 x pi, fully parenthesize teh product A1A2...An in a way that minimized the number
+of scalar multiplications.
+
+Note that in the matrix-chain multiplication problem, we are not actually multiplying matrices. Our goal is only to
+determine an order for multiplying matrices that has the lowest cast. typically, the time invested in determining this
+optimal order is more than paid for by the time saved later on when actually performing the matrix multiplications
+(such as performing only 7500 scalar multiplications instead of 75,000)
+
+Counting the number of parenthesizations
+
+Before solving the matrix-chain multiplication problem by dynamic programming, let us convince ourselves that
+exhaustively checking all possible parenthesizations does not yield an efficient algorithm. Denote the number of
+alternative parenthesizations of a sequence of n matrices by P(n). When n = 1, we have just one matrix and therefore
+only one way to fully parenthesize the matrix product, When n >= 2, a fully parenthesize matrix product is the product
+of two fully parenthesize matrix subproducts, and the split between the two subproducts may occur between teh kth and
+(k+1)st matrices for any k = 1, 2, .. n -1. Thus we obtain the recurrence.
+
+Problem asked you to show that the solution to a similar recurrence is the sequence of Catalan numbers, which grows as
+M(4**n/N**3/2). A simple exercise is to show that the solution to the recurrence is M(2**n). The number of solutions is
+thus exponential in n, and the brute-foce method of exhaustive search makes for a poor strategy when determining how to
+optimally parenthesize a matrix chain.
+
+Applying dynamic programming
+
+We shall use the dynamic programming method to determine how optimally parenthesize a matrix chain. In so doing, we
+shall follow the four-step sequence that we stated at the beginning of this chapter.
+1. Characterize the structure of an optimal solution.
+2. Recursively define the value of an optimal solution.
+3. Compute the value of an optimal solution.
+4. Construct an optimal solution from computed information.
+
+We shall go through these steps in order, demonstrating clearly how we apply each step to the problem.
+
+Step 1: The structure of an optimal parenthesization
+
+For our first step in teh dynamic programming paradigm, we find the optimal substructure and then use it to construct
+an optimal solutioin to the problem from optimal solution to subproblems. In the matrix-chain multiplication problem,
+we can perform this step as follows, Fore convenience, let us adopt the notation Ai..j, where i <= j, for the matrix
+that results from evaluating the product Ai Ai+1 .. Aj. Observe that if tht the problem is nontrivial, i.e. i < j, then
+no parenthesize the product Ai Ai+1 .. Aj, we must split th product between Ak and Ak+1 for some integer k in range
+i <= k < j. That is, for some value of k, we first compute the matrices Ai..k and Ak+1 and then multiply them together
+to produce teh final product Ai..j.
+
+The optimal substructure of this problem is as follows, suppose that to optimally parenthesizing AiAi+1...Aj, we split
+the product between Ak and Ak+1, then the way we parenthesize the 'prefix' subchain Ai Ai+1...Ak within this optimal
+parenthesization of AiAi+1...Aj must be an optimal parenthesization of AiAi+i...Ak. Why? If there were a less costly way
+to parenthesization in the optimal parenthesization of AiAi+i...Aj to produce another way to parenthesize AiAi+1..Aj
+whose cost was lower than teh optimum: a contradiction. A similar observation holds for how we parenthesize the
+subchain Ak+1 Ak+2 ... Aj in the optimal parenthesization of Ai Ai+1 .. Aj: it must be an optimal parenthesization of
+Ak+1 Ak+2 ... Aj.
+
+Now we use our optimal substructure to show that we can construct an optimal solution to the problem from optimal
+solutions to subproblems. We have seen that any solution to a nontrivial instance of the matrix-chain multiplication
+problem requires us to split the product, and that any optimal solution contains within it optimal solutions to
+subproblem instances. Thus, we can built an optimal solution to an instance fo teh matrix-chain multiplication problem
+by splitting the problem into two subproblems (optimally parenthesizing Ai Ai+1 ... Ak and Ak+1, Ak+2 ... Aj).
+finding optimal solutions to subproblem instance. Thus, we can build an optimal solution to an instance of the
+matrix-chain multiplication problem by splitting the problem into two subproblem (optimally parenthesizing). finding
+optimal solutions to subproblem instance, and then combining these optimal subproblem solutions. We must ensure that
+when we search for correct place to split the product, we have considered all possible places, so that we are sure of
+having examined the optimal one.
+
+Step 2: A recursive solution
+
+Next, we define teh cost of an optimal solution recursively in terms of the optimal solutions to subproblems. For the
+matrix-chain multiplication problem, we pick as our subproblems teh problems of determining the minimum cost of
+parenthesizing be the minimum number of scalar multiplications needed to compute the matrix Ai..j; for the full problem,
+the lowest-cost way to compute A1..n roudl thus be m[1..n]
+
+We can define m[i.j] recursively as follows. If i = j, the problem is trivial; the chain consists of just one matrix
+Ai,j = Ai, so that no scalar multiplications are necessary to compute the product, that m[i,j] = 0, for i = 1, 2 ..n.
+To compute m[i,j] when i < j, we take advantage of the structure of an optimal solution from step 1. Let us assume that
+to optimal parenthesize, we split the product Ai Ai+1 ... Aj, between Ak and Ak+1. where i <= k < j. then m[i, j] equals
+the minimum cost for computing the sub-products Ai..k takes pi-1 pk pj scalar multiplications. Thus, we obtain.
+
+This recursive equation assumes that we know the value of k, which we do not. There are only j-i possible value of k,
+however, namely k = i, i + i .. j-1. Since the optimal parenthesization must use one of these values for k, we need only
+check them all to find the best. Thus, our recursive definition for the minimum cost of parenthesizing the product
+becomes
+
+The min[i,j] value give the costs of optimal solutions to subproblems, but they do not provide all the information we
+need to construct an optimal solution. To help us do so, we define s[i, j] equals a value k such that m[i, j] = m[i, k]
++ m[k+1, j] + pi-1pkpj
+
+Steps 3: Computing the optimal costs.
+
+At this point, we could easily write a recursive algoritm based on recurrence to compute the minimum cost for
+multiplying. We saw for the rod-cutting problem. and we we shall see the section 15.3, this recursive algorithm takes
+exponential time. which is no better than the brute-force method of checking each way of parenthesizing the product.
 """
