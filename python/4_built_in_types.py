@@ -371,5 +371,138 @@ from multiple fragments.
 
 class str(object='')
 class str(object=b'', encoding='utf-8', errors='strict')
-    Return a string version of object, if object is not provided, returns the empty string.
+    Return a string version of object, if object is not provided, returns the empty string. Otherwise, the behavior of
+    str() depends on whether encoding or errors is given, as follows.
+
+    If neither encoding nor error is given, str(object) returns object.__str__(), which is the "informal" or nicely
+    printable string representation of object. For string objects, this is the string itself. If object doesn't have
+    a __str__() method, then str() falls back to return repr(objct).
+
+    If at least one of encoding or errors is given, object should be a bytes-like object (e.g. bytes or bytearray).
+    In this case, if object is a bytes (or bytearray) object, then str(bytes, encoding, errors) is equivalent to
+    bytes.decode(encoding, errors). Otherwise, the bytes object underlying the buffer object is obtained before
+    calling bytes.decode(). See Binary Sequence Types - bytes, bytearray, memoryview and Buffer Protocol for
+    information on buffer objects.
+
+    Passing a bytes object to str() without the encoding or error arguments falls under the first case of returning
+    representation (see also the -b command-lien options to Python).
+
+    for more information on the str class and its methods, see Text Sequence Type - str and the String Methods
+    section below. To output formatted strings, see the Formatted string literals and Format Strings Syntax section.
+    In addition, see the Text Processing Services section.
+
+4.7.1. String methods
+
+String implement all of the common sequence operations, along with the additional methods described below.
+
+String also support two styles of string formatting. One providing a large degree of flexibility and customization
+(see str.format(), Format String Syntax and Custom String Formatting) and the other based on C printf style
+formatting that handles a narrower ragne of types and is slightly harder to use corectly, but is often faster
+for the cases it can handle (printf-style Formatting).
+
+The Text Processing Services section of the standard library covers a number of other modules that provide various
+text related utilities (including regular expression support in the re module).
+
+str.capitalize()
+    Return a copy of the string with its first character capitalized and the rest lower cased.
+
+str.casefold()
+    REturn a casefolded copy of the string. Casefolded strings may be used for caseless matching.
+
+    Casefolding is similar to lowercasing but more aggressive because it is intended to remove all case distinctions
+    in a string.
+
+    The casefolding algorithm is describled in section 3.13 of the Unicode Standard.
+
+str.center(width[, fillchar])
+    Return centered in a string of length width. Padding is done using the specified fillchar (default is an ASCII
+    space). The original string is returned if width is less than or equal to len(s).
+
+str.count(sub[, start[, end]])
+    Return the number of non-overlapping occurrences of substring sub in the range [start, end], Optional arguments
+    start and end are interpreted as in slice notation.
+
+str.encode(encoding='utf-8', errors='strict')
+    Return an encoded version of string as a bytes object. Default encoding is 'utf-8'. Errors may be given to set
+    a different error handling scheme. The default for error is 'strict', meaning that encoding errors raise a
+    UnicodeError. Other possible values are 'ignore', 'replace', 'xmlcharrefreplace', 'backslashreplace' and
+    any other name registered via codecs.register_error(), see section Error handlers. For a list of possible encodings,
+    see section Standard Encodings.
+
+str.endswith(suffix[, start[, end])
+    Return True if the string ends with the specified suffix, otherwise return False. suffix can also be a tuple
+    of suffixes to look for. With optional start, test beginning at that position. With optional end, stop comparing
+    at that position.
+
+str.expandtabs(tabsize=8)
+    Return a copy of the string where all tab characters are replaced by one or more spaces, depending on the
+    current column and the given tab size. Tab positions occur every tabsize characters (default is 8, giving tab
+    positions at columns 0, 8, 16 and so on). To expand the string, the current column is set to zero and the string
+    is examined character by character. If the character is a tab (\t), one or more space characters are inserted
+    in the result until the current columns is equal to the next tab position. (The tab character itself is not copied.)
+    If the character is a newline (\n| or return (\r), it is copied and the current column is reset to zero. Any other
+    character is copied unchanged and the current column is incremented by one regardless of how the character is
+    presented when printed.
+
+str.find(sub[, start[, end]])
+    Return the lowest index in the string where substring sub is found within the slice s[start:end]. Optional
+    arguments start and end are interpreted as in slice notation. Return -1 if sub is not found.
+
+    Note: The find() method should be used only if you need to know the position of sub. to check if sub is a substring
+    or not, use the in operator.
+
+str.format(*args, **kwargs)
+    Perform a string formatting operation. The string on which this method is called can contain literal text or
+    replacement fields delimited by braces {}. Each replacement field contains either the number index of a positional
+    argument, or the name of the keyword argument. Returns a copy of the string where each replacement field is replaced
+    with the string value of the corresponding argument.
+
+    See Format String Syntax for a description of the various formatting options that can be specified in format
+    strings.
+
+    Note: When formatting a number (int, float, float and subclass) with the n type (ex: '{:n}'.format(1234),
+    the function sets temporarily the LC_CTYPE local to teh LC_NUMERIC locale to decode decimal_point and
+    thousands_sep fields of localeconv() if they are non-ASCII or longer than 1 byte, and the LC_NUMERIC locale
+    is different than the LC_CTYPE locale. This temporary change affects other threads.
+
+str.format_map(mapping)
+    Similar to str.format(**mapping), except that mapping is used directly and not copied to a dict. This is
+    useful if for example mapping is a dict subclass:
+
+str.index(sub[, start[, end]])
+    Like find(), but raise ValueError when the substring is not found.
+
+str.isalnum()
+    Return true if all characters in the strings are alphanumeric and there is at east one character, false
+    otherwise. A character c is alphanumeric if one of the following returns True: c.isalpha(), c.isdecimal()
+    c.isdigit(), or c.isnumeric().
+
+str.isalpha()
+    Return true if all characters in teh string are alphabetic and there is at least one character, false otherwise.
+    Alphabetic characters are those characters defined in the Unicode character database as "Letter", i.e., those with
+    general category property being one of 'Lm', 'Lt', 'Lu', 'Li', or 'Lo'. Note that this is different from
+    alphabetic property defined in the Unicode Standard.
+
+str.isdecimal()
+    Return true if all characters in the string are decimal characters and there is at least one character, false
+    otherwise. Decimal characters are those that can be used to from numbers in base 10, e.g, U+0660, ARABIC-INDIC
+    DIGIT ZERO. Formmaly a decimal character is a character in the Unicode General Category "Nd".
+
+str.isdigit()
+    Return true if all characters in the string are digits and there is at least one character, false otherwise.
+    Digits include decimal characters and digits that need special handling, such as the compatibility superscript
+    digits. This covers digits which cannot be used to form numbers in base 10, like the Kharosthi numbers. Formatlly,
+    a digit is a character that has the property value Numeric_Type = Digit or Numeric_Type = Decimal.
+
+str.isidentifier()
+    Return true if the string is a valid identifier according to the language definition, section identifiers and
+    keywords.
+
+    Use keyword.iskeyword() to test for reserved identifiers such as def and class.
+
+str.islower()
+    Return true if all cased characters in the string are lowercase and there is at least one cased character,
+    false otherwise.
+
+
 """
