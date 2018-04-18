@@ -63,3 +63,13 @@ setattr(dog, 'y', 19)
 print(hasattr(dog, 'y'))
 print(getattr(dog, 'y'))
 print(dog.y)
+
+
+def read_image(fp):
+    if hasattr(fp, 'read'):
+        return read_data(fp)
+    return None
+
+
+def read_data(fp):
+    pass
