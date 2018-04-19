@@ -1,3 +1,4 @@
+"""
 from enum import Enum, unique
 
 
@@ -16,3 +17,4 @@ class Weekday(Enum):
     Thu = 4
     Fri = 5
     Sat = 6
+"""
