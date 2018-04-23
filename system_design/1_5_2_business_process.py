@@ -64,6 +64,4 @@ system design
     todo: chapter 9, data design
     todo: chapter 10, system architecture
 
-
-
 """
