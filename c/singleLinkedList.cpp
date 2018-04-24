@@ -13,6 +13,6 @@ void fun1(struct SingleLinkedListNode* head)
         return;
 
     fun1(head->next);
-    printf("%d ", head->data);
+    printf("%d "
+, head->data);
 }
-
