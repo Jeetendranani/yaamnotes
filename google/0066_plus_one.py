@@ -298,7 +298,7 @@ guide.
 13. What Now?
 
 Reading this tutorial has probably reinforced your interest in using Python - You should be eager to apply Python to 
-solving your real-world problems. Where should you go to learn more?
+solving your real-world leetcode. Where should you go to learn more?
 
 This tutorial is part of Python's documentation set. Some other documents in the set are:
 

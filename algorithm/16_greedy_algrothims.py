@@ -1,14 +1,14 @@
 """
 16. Greedy Algorithms
 
-Algorithms for optimization problems typically go through a sequence of steps, with a set of choices at each step. For
-many optimization problems, using dynamic programming to determine the best choices is overkill; simpler, more efficient
+Algorithms for optimization leetcode typically go through a sequence of steps, with a set of choices at each step. For
+many optimization leetcode, using dynamic programming to determine the best choices is overkill; simpler, more efficient
 algorithms will do. A greedy algorithm always makes the choice that looks best at the moment. That is, it makes a
 locally optimal choice in the hope that this choice will lead to a globally optimal solution. This chapter explores
-optimization problems for which greedy algorithms provide optimal solutions. Before reading chapter, you should read
+optimization leetcode for which greedy algorithms provide optimal solutions. Before reading chapter, you should read
 abut dynamic programming in chapter 15, particularly section 15.3.
 
-Greedy algorithms fo not always yield optimal solutions, but for many problems they do. We shall first examine, in
+Greedy algorithms fo not always yield optimal solutions, but for many leetcode they do. We shall first examine, in
 section 16.1, a simple but nontrivial problem, the activity-selection problem, for which a greedy algorithm efficiently
 computes an optimal solution. We shall arrive at the greedy algoritm by first considering a dynamic programming
 approach and then showing that we can always make greedy choices to arrive at an optimal solution. section 16.2 reviews
@@ -18,7 +18,7 @@ we investigate some of the theory underlying combinatorial structures called "ma
 always produces an optimal solution. Finally, section 16.5 applies matroids to solve a problem of scheduling unit-time
 tasks with deadlines and penalties.
 
-The greedy method is si quite powerful and words well for a wide range of problems, Later chapters will present many
+The greedy method is si quite powerful and words well for a wide range of leetcode, Later chapters will present many
 algorithm that we can view as applications of the greedy method, including minimum spanning tree algorithm, Digkstr's
 algorithm for shortest paths form a single source. and Chvatil's greedy set covering heuristic. Minimum spanning tree
 algorithms furnish a classic example fo the greedy method, Although you can read this chapter and chapter 23
@@ -81,7 +81,7 @@ best in the current problem. without considering results from subproblems.
 
 Here is where greedy algorithms differ from dynamic programming. In dynamic programming, we make a choice at each step,
 but the choice usually depends on the solutions to subproblems. Consequently, we typically solve dynamic programming
-problems in a bottom up manner, progressing from smaller subproblems to larger subproblems. (Alternatively, we can
+leetcode in a bottom up manner, progressing from smaller subproblems to larger subproblems. (Alternatively, we can
 solve them top down, but memoizing. Of course, even though the code works top down, we still must solve the subproblem
 before making a choice.) In a greedy algorithm, we make whatever choice seems best at the moment and then solve the
 subproblem that remains. The choice made by greedy algorithm may depend on choices so far, but it cannot depend on any

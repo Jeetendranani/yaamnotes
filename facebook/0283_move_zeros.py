@@ -52,7 +52,7 @@ The 2 requirements of the questions are:
     1. Move all teh 0's to the end of array.
     2. All the non-zero elements must retain their original order.
 it's good to realize here that both the requirements are mutually exclusive, i.e., You can solve the individual sub
-problems and then combine them for teh final solution.
+leetcode and then combine them for teh final solution.
 
 To reduce its Time complexity, we create an new array to store the result, just put the non-zero one instead. Then 
 copy the ans back to the nums.

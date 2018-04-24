@@ -1,7 +1,7 @@
 """
 15. Dynamic Programming
 
-Dynamic programming, like the dived and conquer method, solves problems by combining the solutions to subproblems.
+Dynamic programming, like the dived and conquer method, solves leetcode by combining the solutions to subproblems.
 ("Programming" in this context refers to a tabular method, not to the writing computer code.) As we saw in chapter 2
 and 4, divide and conquer algorithms partition the problem into disjoint subproblems, solve the subproblem recursively,
 and then combine their solutions to solve the original problem. In contrast, dynamic programming applies when the
@@ -10,7 +10,7 @@ does more work than necessary, repeatedly solving the common sub-subproblems. A 
 each subproblem just once and then saves its answer in a table, thereby avoiding the work of recomputing the answer
 every time it solves each sub-subproblems.
 
-We typically apply dynamic programming to optimization problems. Such problems can have many possible solutions. Each
+We typically apply dynamic programming to optimization leetcode. Such leetcode can have many possible solutions. Each
 solution has a value. We call such a solution an optimal (minimum or maximum) value. We call such a solution an
 optimal solution to the problem, as opposed to the optimal solution, since there may be several solutions that achieve
 the optimal value.
@@ -25,7 +25,7 @@ Steps 1-3 from the basis of a dynamic programming solution to a problem. If we n
 solution, and the solution itself, then we can omit step 4. When we do perform step 4, we sometimes maintain additional
 information during step 3 so that we can easily construct an optimal solution.
 
-The sections that follow use teh dynamic-programming method to solve some optimization problems. Section 15.1 examines
+The sections that follow use teh dynamic-programming method to solve some optimization leetcode. Section 15.1 examines
 the problem of cutting a rod into rods of smaller length in way that maximizes their total value. Section 15.2 asks how
 we can multiply a chain of matrices, while performing the fewest total scalar multiplications. Given these examples of
 dynamic programming, section 15.3 discusses two key characteristics that a problem must have for dynamic programming to
@@ -70,7 +70,7 @@ revenues ri and r n-1 from those two pieces. Since we dont' know ahead of time w
 have to consider all possible values for i and pick th eone that maximizes revenue, we also have the option of picking
 no cut at all if we can obtain more revenue by selling the rod uncut.
 
-Note that to solve the original problem of size n, we solve smaller problems of the same type, but of smaller sizes.
+Note that to solve the original problem of size n, we solve smaller leetcode of the same type, but of smaller sizes.
 Once we make the first cut, we may consider the two pieces as independent instances of the rod-cutting problem. The
 overall optimal solution incorporate optimal solution to teh tow related subproblems, maximizing revenue from each
 of those two pieces. We say that the rod-cutting problem exhibits optimal substructure: optimal solutions to a problem
@@ -381,7 +381,7 @@ having examined the optimal one.
 Step 2: A recursive solution
 
 Next, we define teh cost of an optimal solution recursively in terms of the optimal solutions to subproblems. For the
-matrix-chain multiplication problem, we pick as our subproblems teh problems of determining the minimum cost of
+matrix-chain multiplication problem, we pick as our subproblems teh leetcode of determining the minimum cost of
 parenthesizing be the minimum number of scalar multiplications needed to compute the matrix Ai..j; for the full problem,
 the lowest-cost way to compute A1..n roudl thus be m[1..n]
 

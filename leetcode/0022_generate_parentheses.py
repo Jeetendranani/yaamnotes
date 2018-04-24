@@ -116,8 +116,8 @@ class Solution2(object):
 """
 Backtracking
 
-Backtracking is a general algorithm for finding all (or some) solutions to some computational problems, notably 
-constraint satisfaction problems, that incrementally builds candidates to the solution, and abandons a candidate as soon
+Backtracking is a general algorithm for finding all (or some) solutions to some computational leetcode, notably 
+constraint satisfaction leetcode, that incrementally builds candidates to the solution, and abandons a candidate as soon
 as it determines that the candidate cannot possibly be completed to a valid solution.
 
 The classic textbook example of the use of backtracking is the eight queens puzzle, that asks for all arrangements of 
@@ -125,12 +125,12 @@ eight chess queens on a standard chessboard so that no queen attacks any other. 
 the partial candidates are arrangements of k queens in the first k rows of the board, all in different tows and columns.
 Any partial solution that contains two mutually attaching queens can be abandoned.
 
-Backtracking can be applied only for problems which admit the concept a partial candidate solution" and a relatively 
+Backtracking can be applied only for leetcode which admit the concept a partial candidate solution" and a relatively 
 quick test of whether it can possible be completed to a valid solution. It is useless, for example, for locating a 
 given value in an unordered table. When it is applicable, however, backtracking is often much faster than brute force 
 enumeration of all complete candidates, since it can eliminate a large number of candidates with a single test. 
 
-Backtracking is an important tool for solving constraint satisfaction problems, such as crosswords, verbal arithmetic, 
+Backtracking is an important tool for solving constraint satisfaction leetcode, such as crosswords, verbal arithmetic, 
 Sudoku, and many other puzzles, It is often th most convenient (if not the most efficient) technique for parsing, for 
 the knapsack problem and other combinatorial optimization problem. It is also the basis of the so-called logic
 programming languages such as Icon, Planner and Prolog.
@@ -165,7 +165,7 @@ fact should be considered when choosing the potential search tree and implementi
 
 Pseudocode
 
-In order to apply backtracking to a specific class of problems, one must provide the data P for the particular instance 
+In order to apply backtracking to a specific class of leetcode, one must provide the data P for the particular instance 
 of hte problem that is to be solved, and six procedural parameters, root, reject, accept, first, next, and output. 
 These procedures should take the instance data P as a parameter and should do the following:
     1. root(P): return the partial candidate at the root of the search tree.

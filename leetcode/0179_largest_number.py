@@ -17,7 +17,7 @@ Algorithm:
 
 First, we convert each integer to a string. Then, we sort the array of strings.
 
-While it might be tempting to simply sort the numbers in descending order, this causes problems for set of numbers with
+While it might be tempting to simply sort the numbers in descending order, this causes leetcode for set of numbers with
 the same leading digits. For example, sorting the problem example in descending order would produce the number 9534303,
 while the correct answer can be achieved by transposing the 3 and 30. Therefore, for each pairwise comparison during
 the sort, we compare the numbers achieved by concatenating the pair in both orders. We can prove that this sorts into

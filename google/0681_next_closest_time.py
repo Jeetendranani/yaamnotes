@@ -382,7 +382,7 @@ short-circuit operator is the last evaluated argument.
 It is possible to assign the result of comparison or other Boolean expression to a variable. For example,
 
 Note that in Python, unlike C, assignment cannot occur inside expressions, C programmers may grumble about this, but it
-avoids a common class of problems encountered in C programs: typing = in an expression when == was intended.
+avoids a common class of leetcode encountered in C programs: typing = in an expression when == was intended.
 
 5.8. Comparing Sequences and other types
 

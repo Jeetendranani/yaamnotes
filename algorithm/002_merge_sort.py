@@ -76,7 +76,7 @@ algorithm.
 A recurrence for the running time of the divide and conquer algorithm falls out from the three steps of the basic 
 paradigm. As before, we let T(n) be the running time on a problem of size n. If the problem size is small enough, say
 n <= c for some constant c, the straightforward solution takes constant time, which we write as O(1). Suppose that our 
-division of the problem yields a sub-problems, each of which is 1/b the size of the original. (For merge sort, both a 
+division of the problem yields a sub-leetcode, each of which is 1/b the size of the original. (For merge sort, both a 
 and b are 2, but we shall see many divide and conquer algorithm in which a != b.) It takes time T(n/b) to solve one 
 problem of size n/b, and so it takes time aT(n/b) to solve a problem o of them. If we take D(n) time to divide the 
 problem into subproblems and C(n) time to combine the solution to the subproblems into the solution to the original

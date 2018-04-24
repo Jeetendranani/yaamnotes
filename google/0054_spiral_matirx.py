@@ -128,7 +128,7 @@ class Solution1(object):
 9.4. Random Remarks
 
 Data attributes override method attributes with the same name; to avoid accidental name conflicts, which may cause 
-hard-to-find bugs in large problems, it is wise to use some kind of convention that minimizes the chance of conflicts.
+hard-to-find bugs in large leetcode, it is wise to use some kind of convention that minimizes the chance of conflicts.
 Possible conventions including capitalizing methods names, prefixing data attribute names with a small unique string 
 (perhaps just an underscore), or using verbs for methods and nouns for data attributes.
 

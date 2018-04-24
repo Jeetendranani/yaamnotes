@@ -16,10 +16,10 @@ programming might apply. (As chapter 16 discuss, it also might mean that a greed
 programming, we build an optimal solution to teh problem from optimal solutions to subproblems. Consequently, we must
 take care to ensure that the range of subproblems we consider includes those used in an optimal solution.
 
-We discovered optimal substructure in both of the problems we have examined in this chapter so far. In section 15.1, we
+We discovered optimal substructure in both of the leetcode we have examined in this chapter so far. In section 15.1, we
 observed that the optimal way of cutting up a rod of length n( if we make any cuts at all) involves optimally cutting up
 the two pieces resulting from the fist cut, In section 15.2, we observed that an optimal parenthesizing of A that spits
-the product between Ak an Ak+1 contains within it optimal solutions to the problems of parenthesizing.
+the product between Ak an Ak+1 contains within it optimal solutions to the leetcode of parenthesizing.
 
 you will find yourself following a common pattern in discovering optimal substructure:
 
@@ -75,21 +75,21 @@ degree at most n-1, giving a total of O(n**3) vertices and edges.
 
 Dynamic programming often use optimal substructure in a bottom-up fashion. This is, we first find optimal solutions to
 subproblems and having solved the subproblems, we find aan optimal solution to the problem. Finding an optimal solution
-to the problems, entails making a choice among subproblems as to which we will use in solving the problem. The cost of
+to the leetcode, entails making a choice among subproblems as to which we will use in solving the problem. The cost of
 the problem solution is usually the subproblem costs plus a cost that is directly attributable to the choice itself. In
 rod cutting.
 
 In chapter 16, we shall examine 'greedy algorithms' which hve many similarities to dynamic programming. In particular,
-problems to which greedy algorithms apply have optimal substructure. One major difference between greedy algorithms and
+leetcode to which greedy algorithms apply have optimal substructure. One major difference between greedy algorithms and
 dynamic programming is that instead of first finding optimal solutions to subproblems and then making an informed
 choice, greedy algorithms first make a greedy choice - the choice that looks best at the time - and then solve resulting
-subproblem, without bothering to solve all possible related smaller problems. Surprisingly, in some cases this strategy
+subproblem, without bothering to solve all possible related smaller leetcode. Surprisingly, in some cases this strategy
 works!
 
 Subtlities
 
 You should be careful not to assume tht optimal substructure applies when it does not. Consider the following two
-problems in which we are gien a directed graph G = (V, E) and vertices u, v belongs to V.
+leetcode in which we are gien a directed graph G = (V, E) and vertices u, v belongs to V.
 
 Overlapping subproblems
 

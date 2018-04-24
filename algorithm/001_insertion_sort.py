@@ -39,9 +39,9 @@ detail in chapter 4. we'll use divide and conquer to design a sorting algorithm 
 less than that of insertion sort. On advantage of divide and conquer algorithms is that their running times are often 
 easily determined using techniques that we will see in chapter 4.
 
-Most professional programmers that I've encountered are not well prepared to tackle algorithm design problems. This is
+Most professional programmers that I've encountered are not well prepared to tackle algorithm design leetcode. This is
 a pity, because the techniques of algorithm design from one of the core practical technologies of computer science. 
-Designing correct, efficient and implementable algorithms for real-word problems requires access to two distinct bodies
+Designing correct, efficient and implementable algorithms for real-word leetcode requires access to two distinct bodies
 of knowledge:
 - Techniques - Good algorithm designers understand several fundamental algorithm design techniques, including data 
 structures, dynamic programming, depth-frist search, backtracking, and heuristics. Perhaps the single most important 
@@ -51,20 +51,20 @@ algorithmic attack.
 - Resources - Good algorithm designers stand on the shoulders of giants. Rather than laboring from scratch to produce
 a new algorithms for every task, they can figure out what is known about a particular problem. Rather than 
 re-implementing popular algorithms from scratch, they seek existing implementations to serve as a starting point. they 
-are familiar with many classic algorithmic problems, which provide sufficient source material to model most any 
+are familiar with many classic algorithmic leetcode, which provide sufficient source material to model most any 
 application.
 
 Three aspects of the algorithm design manual have been particularly beloved:
-    1. The catalog of algorithmic problems, 
+    1. The catalog of algorithmic leetcode, 
     2. The war stories
     3. The electronic component of the book
     
 2.3.1. the divide and conquer approach
 
-    Divide the problem into number of sub-problems that are smaller instances of the same problem
-    Conquer the sub-problems by solving them recursively. If the sub-problem size are small enough, however,just resole
-    the sub-problems in a straightforward manner.
-    combine the solutions to the sub-problems into the solution for hte original problem
+    Divide the problem into number of sub-leetcode that are smaller instances of the same problem
+    Conquer the sub-leetcode by solving them recursively. If the sub-problem size are small enough, however,just resole
+    the sub-leetcode in a straightforward manner.
+    combine the solutions to the sub-leetcode into the solution for hte original problem
     
     Divide: Divide hte n-element sequence to be sorted into two subsequence of n/2 elements each.
     Conquer: sort the two sub-sequences recursively using merge sort.

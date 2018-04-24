@@ -26,7 +26,7 @@ many smart people several years to do that properly. Don't worry, no one really 
 The idea of these questions is to have a discussion about the problem at hand. What's important for the interviewer is
 the process, which you use to tackle the problem. The typical outcome of such a discussion is a high-level architecture
 addressing the goals and constrains in the question. Perhaps the interviewer will choose one or more areas where they
-will want to discuss bottlenecks and other common problems.
+will want to discuss bottlenecks and other common leetcode.
 
 Remember that there is no one right answer. A system can be built in different ways. The important thing is to be able
 to justify your ideas. This is somewhat different from the algorithm design questions that we looked at in previous

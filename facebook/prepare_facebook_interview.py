@@ -28,7 +28,7 @@ The path to an offer
 
 Goals of a coding interview
 Get signal on thins we do at work everyday:
-    - how you think and tackle hard problems
+    - how you think and tackle hard leetcode
     - how you consider engineering trade-offs (memory vs time)
     - how you communicate in English about code
     - Limits of what you know

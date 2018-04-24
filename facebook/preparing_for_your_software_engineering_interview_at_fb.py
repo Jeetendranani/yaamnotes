@@ -85,7 +85,7 @@ an engineer.
 
 Tips for the coding interview:
 
-- Think out loud: We pay a lot fo attention to the way you solve problems, which can be as important as having the right
+- Think out loud: We pay a lot fo attention to the way you solve leetcode, which can be as important as having the right
 answer, Thinking out loud gives the interviewer insight into your thinking process and can also help them following
 with your solution. Moreover, it allows them to give hints when needed.
 
@@ -142,7 +142,7 @@ following is typical:
 
     - Introductions: The first five minutes will be an introduction and possibly brief questions about your backgroud.
 
-    - Coding: The next 30 minutes will be one or more coding problems.
+    - Coding: The next 30 minutes will be one or more coding leetcode.
 
     - Ask Us Anything: We try to reserve the final five minutes for your questions for teh interviewer. This part gives
     you a chance to lean more about Facebook from someone in engineering and gives your interviewer a chance to lear
@@ -234,7 +234,7 @@ Tips for the design interviews:
 into subparts.
 
 - identify your focus: There's not enough time to discuss every detail of the design, find the interesting and hard
-problems to focus the discussion on.
+leetcode to focus the discussion on.
 
 - Navigate the holistic and the details: Move effortlessly from the goals to the high-level approach to teh precise
 detail and back again. A good solution covers both high level ideas as well as low level specifics. Talk abut what

@@ -7,7 +7,7 @@ Why problem solving?
     - face challenges
     - try to overcome them
 
-    there a fundamental approach to solve these real-life problems, one that can consistently lead you to effective and
+    there a fundamental approach to solve these real-life leetcode, one that can consistently lead you to effective and
     satisfying solutions.
 
     Being a problem solver isn't just an ability; it's a whole mind-set, one that drives people to bring out the best

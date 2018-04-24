@@ -6,10 +6,10 @@ segmented into a space-separated sequence of one or more dictionary words. You m
 contain duplicate words.
 
 For example, given
-s = "leetcode"
+s = "yaamnotes"
 dict = ['leet', 'code']
 
-Return true because 'leetcode' can be segmented as 'leet code'.
+Return true because 'yaamnotes' can be segmented as 'leet code'.
 
 
 Approach 1: Brute Force

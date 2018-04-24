@@ -2,7 +2,7 @@
 Problem Solving and Algorithms
 
 Lean a basic process for developing a solution to a problem. Nothing in this chapter is unique to using a computer to
-solve a problem. This process can be used to solve a wide variety of problems, including ones that have nothing to do
+solve a problem. This process can be used to solve a wide variety of leetcode, including ones that have nothing to do
 with computers.
 
 Problems, solutions, and Tools
@@ -11,7 +11,7 @@ I have a problem! i need to thank Aunt Kay for the birthday present she sent me.
 the email message. i could drive to her house and thank her in person. In fact, here are many ways I could thank her,
 but that's not the point. The point is that I must decide how I want to solve the problem, and use the appropriate tool
 to implement (carry out) my plan. The postal service, the telephone, the internet, and my automobile are tools that I
-can use, but none of these actually solve my problem. In a similar way, a computer doesn't solve problems, it's just a
+can use, but none of these actually solve my problem. In a similar way, a computer doesn't solve leetcode, it's just a
 tool that I can use to implement my plan for solving problem.
 
 Knowing that Aunt kay appreciates creative and unusual things, I have decide to hire a singing messenger to deliver my
@@ -29,8 +29,8 @@ computer programs. The following list summarizes the key aspects of this point o
     - A person must design an algorithm.
     - A person must translate an algorithm into a computer program.
 
-This point of view sets teh stage for process that we will use to develop solutions to Jeroo problems. The basic process
-is important because it can be used to solve a wide variety of problems, including ones where the solution will be
+This point of view sets teh stage for process that we will use to develop solutions to Jeroo leetcode. The basic process
+is important because it can be used to solve a wide variety of leetcode, including ones where the solution will be
 written in some other programming languages.
 
 An algorithm Development Process
@@ -131,7 +131,7 @@ match the ability of the programmer. When in doubt, or when you are learning, it
 to have too little.
 
 Most of our examples will move from a high-level to a detailed algorithm in a single step, but this is not always
-reasonable. For larger, more complex problems, it is common to go through this process several times, developing
+reasonable. For larger, more complex leetcode, it is common to go through this process several times, developing
 intermediate level algorithms as we go. Each time, we add more detail to the previous algorithm, stopping when we see
 no benefit to further refinement. This technique of gradually working from a high-level to a detailed algorithm is often
 called Stepwise refinement.

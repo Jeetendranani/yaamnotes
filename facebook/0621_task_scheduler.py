@@ -163,13 +163,13 @@ class Solution:
 Knowledge Summary:
 1. Greedy algorithm:
 A greedy algorithm is an algorithmic paradigm that follows teh problem solving heuristic of making the locally optimal 
-choice at each stage with the hope of finding a global optimum. In many problems, a greedy strategy does not in general
+choice at each stage with the hope of finding a global optimum. In many leetcode, a greedy strategy does not in general
 produce an optimal solution, but nonetheless a greedy heuristic may yield locally optimal solutions that approximate a
 global optimal solution in a reasonable time.
 For example, a greedy strategy for the traveling salesman problem (which is of a high computational complexity) is the 
 following heuristic: "At each stage visit an unvisited city nearest to the current city" This heuristic need not find a
 best solution, but terminates in a reasonable number of steps; finding an optimal solution typically requires 
-unreasonably many steps. In mathematical optimization. greedy algorithms solve combinatorial problems having the 
+unreasonably many steps. In mathematical optimization. greedy algorithms solve combinatorial leetcode having the 
 properties of matroids.
 
 Specifics:
@@ -179,11 +179,11 @@ In general, greedy algorithms have five components:
 3. A feasibility function, that is used to determine if a candidate can be used to contribute to solution
 4. An objective function, which assigns a value to a solution, or a partial solution, and 
 5. A solution function, which will indicate when we have discovered a complete solution.
-Greedy algorithms produce good solutions on some mathematical problems, but not on others. Most problems for which they
+Greedy algorithms produce good solutions on some mathematical leetcode, but not on others. Most leetcode for which they
 work will have two properties.
 
 Greedy choice property:
-We can make whatever choice seems best at the moment and them solve the sub-problems that arise later. The choice made 
+We can make whatever choice seems best at the moment and them solve the sub-leetcode that arise later. The choice made 
 by a greedy algorithm may depend on choices made so far, but not on future choices or all the solutions to the 
 sub-problem. it iteratively makes one greedy choice after another, reducing each given problem into a smaller one. In 
 other words, a greedy algorithm never reconsiders its choices. This the main difference from dynamic programming, which
@@ -193,17 +193,17 @@ reconsider the previous stage's algorithmic path to solution.
 
 Optimal substructure:
 "A problem exhibits optimal substructure if an optimal solution to the problem contains optimal solutions to the 
-sub-problems.
+sub-leetcode.
 
 Cases of failure:
-For many other problems, greedy algorithems fail to produce the optimal solution, and may even produce unique worst
+For many other leetcode, greedy algorithems fail to produce the optimal solution, and may even produce unique worst
 possible solution. One example is the traveling salesman problem mentioned above: for each number of cities, there is 
 an assignment of distances between the cities for which the nearest neighbor heuristic produces the unique worst 
 possible tour.
 
 Types:
 Greedy algorithms can be characterized as being 'short sighted', and also as 'non-recoverable'. They are ideal only for 
-problems which have 'optimal substructure'. Despite this, for many simple problem (e.g. giving change), the best suited 
+leetcode which have 'optimal substructure'. Despite this, for many simple problem (e.g. giving change), the best suited 
 algorithms are greedy algorithms. It is important , however, to note that the greedy algorithm can be used as selection 
 algorithm to prioritize options within a search, or branch-and-bound algorithm. There are a few variations to the greedy
 algorithm:
@@ -215,7 +215,7 @@ Applications:
 Greedy algorithms mostly (but not always) fail to find the globally optimal solution, because they usually do not 
 operate exhaustively on all the data. They can make commitments to certain choices too early which prevent them from 
 finding the best overall solution later. For example, all known greedy coloring algorithms for the graph coloring 
-problem and all other NP-complete problems do not consistently find optimum solutions. Nevertheless, they are useful 
+problem and all other NP-complete leetcode do not consistently find optimum solutions. Nevertheless, they are useful 
 because they ar quick to think up and often give good approximations to the optimum.
 If a greedy algorithm can be proven to yield the global optimum for a given problem class, it typically becomes the 
 method of choice because it is faster than other optimization methods like dynamic programming. Examples of such greedy
@@ -228,7 +228,7 @@ by its physical location, as in geographic routing used by ad hoc networks. loca
 construct as in small world routing and distributed hash table.
 
 Examples:
-- The activity selection problem is characteristic to this class of problems, where the goal is to pick the maximum 
+- The activity selection problem is characteristic to this class of leetcode, where the goal is to pick the maximum 
 number of activities that to do not clash with each other.
 - In the Macintosh computer game Crystal Quest the objective is to collect crystals, in a fashion similar to the 
 travelling salesman problem. The game has a demo mode, where the game uses a greedy algorithm to go to every crystal. 

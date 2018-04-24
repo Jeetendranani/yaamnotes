@@ -138,7 +138,7 @@ components that are commonly included in Python distributions.
 Python's standard library is very extensive, offering a wide range of facilities as indicated by the long tale of 
 contents listed below. The library contains built-in modules (written in C) that provide access to system functionality 
 such as file I/O what would otherwise be inaccessible to Python programmers, as well as modules written in Python that 
-provide standardized solutions for many problems that occur in everyday programming. Some of these modules are 
+provide standardized solutions for many leetcode that occur in everyday programming. Some of these modules are 
 explicitly designed to encourage and enhance the portability of Python programs by abstracting away platform-specifics 
 into platform-neutral APIs.
 

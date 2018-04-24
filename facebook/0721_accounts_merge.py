@@ -136,7 +136,7 @@ class Solution1(object):
 """
 4. Trees and graphs
 
-Many interviewees find tree and graph problems to be some of the trickiest. Searching a tree is more complicated than 
+Many interviewees find tree and graph leetcode to be some of the trickiest. Searching a tree is more complicated than 
 searching in a linearly organized data structure such as an array or linked list. Additionally, the worst case and 
 average case time may vary wildly, and we must evaluate both aspects of any algorithm. Fluency in implementing a tree
 or graph from scratch will prove essential.

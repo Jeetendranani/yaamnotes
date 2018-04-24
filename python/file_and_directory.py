@@ -11,8 +11,8 @@ os.mkdir('/Users/YunpengLi/testdir')
 os.rmdir('/Users/yunpengLi/testdir')
 
 print(os.path.join('/Users/YunpengLi', 'testdir'))
-print(os.path.split('/Users/yunpengli/PycharmProjects/leetcode/python/hello.py'))
-print(os.path.splitext('/Users/yunpengli/PycharmProjects/leetcode/python/hello.py'))
+print(os.path.split('/Users/yunpengli/PycharmProjects/yaamnotes/python/hello.py'))
+print(os.path.splitext('/Users/yunpengli/PycharmProjects/yaamnotes/python/hello.py'))
 
 dirlist = [x for x in os.listdir('.') if os.path.isdir(x)]
 print(dirlist)

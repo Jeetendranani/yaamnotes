@@ -2,3 +2,5 @@
 .idea/
 venv/
 venv1/
+.DS_Store
+c/cmake-build-debug

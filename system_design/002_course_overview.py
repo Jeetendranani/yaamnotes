@@ -6,7 +6,7 @@ Candidates either:
     - Approach question in a chaotic way and get ratholed, or
     - Lack solid understanding of how to properly design architectures that scale.
 
-Fixing these two problems is going to be our focus throughout this course. By the time you've finished all sections,
+Fixing these two leetcode is going to be our focus throughout this course. By the time you've finished all sections,
 you'll be exceptionally well equipped to tackle any system design question.
 
 The system design process

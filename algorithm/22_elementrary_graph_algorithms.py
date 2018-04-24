@@ -63,7 +63,7 @@ thereby cutting the memory needed to store the graph almost in half.
 Like the adjacency-list representation of a graph, an adjacency matrix can represent a weighted graph. For example, if
 G = (V, E) is a weighted graph with edge weight function w, we can simply store the weight w(u, v) of the edge (u, v)
 < E as th entry in row u and column v of teh adjacency matrix. If an edge does not exist, we can store an Nil value as
-its corresponding matrix entry, though for many problems it is convenient to use a value such as 0 or inf.
+its corresponding matrix entry, though for many leetcode it is convenient to use a value such as 0 or inf.
 
 Although the adjacency-list representation is asymptotically at least as space-efficient as the adjacency-matrix
 representation, adjacency matrices are simpler, and so we may prefer them when graphs are reasonably small. Moreover,

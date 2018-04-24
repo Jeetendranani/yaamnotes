@@ -5,14 +5,14 @@ Analytical skills and keywords for resume, cover letters, and interviews
 
 What are analytical skills, and why are they important in the workspace? Analytical skills refer to the ability to
 collect and analyze information, problem-solve, and make decisions. These strengths can help solve a company's
-problems and improve upon its overall productivity and success.
+leetcode and improve upon its overall productivity and success.
 
 Here's information on why employers seek employees with these analytical skills, as well as an associated list of which
 employers look for in resume, cover letters, job applications, and interviews.
 
 Why employers value analytical skills
 
-To solve problems, employees need strong analytical skills, Hiring managers desire a person who use clear, logical steps
+To solve leetcode, employees need strong analytical skills, Hiring managers desire a person who use clear, logical steps
 and excellent judgment to understand an issue from all angles before executing an action. Solutions can be reached by
 clear-cut, methodical approaches or more creative and lateral angles, depending on the objective. both way of solving
 a problem require analytical skills.
@@ -46,7 +46,7 @@ Top five analytical skills
     2. Creativity
     Often, analyzing requires a creative eye to spot trends in the data that others may not find. Creativity is also
     important when it comes to problem-solving. employees often must think outside of the box to come up with effective
-    solutions to big problems.
+    solutions to big leetcode.
         - Budgeting
         - Collaborating
         - Improving
@@ -64,7 +64,7 @@ Top five analytical skills
     3. Critical thinking todo:
     critical thinking is necessary for having strong analytical skills. Critical thinking refers to evaluating
     information and then making a decision based on your findings. Critical thinking is what helps an employee make
-    decisions that hep solving problems for the company.
+    decisions that hep solving leetcode for the company.
         - auditing
         - benchmarking
         - big data

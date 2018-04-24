@@ -20,7 +20,7 @@ that index is called a 'bad index'. The problem then reduces to whether or not i
 
 Solution
 
-This is a dynamic programming question. Usually, solving and fully understand a dynamic programming problems is a 4
+This is a dynamic programming question. Usually, solving and fully understand a dynamic programming leetcode is a 4
 step progress:
 
 1. start withe the recursive backtracking solution

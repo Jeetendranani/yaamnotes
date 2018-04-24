@@ -3,8 +3,8 @@ VI. Graph Algorithms
 
 Introduction
 
-Graph problems pervade computer science, and algorithms for working with them are fundamental to the field. Hundreds of
-interesting computational problems are couched in terms of graphs. In this part, we touch on a few of the more
+Graph leetcode pervade computer science, and algorithms for working with them are fundamental to the field. Hundreds of
+interesting computational leetcode are couched in terms of graphs. In this part, we touch on a few of the more
 significant ones.
 
 Chapter 22 shows how we can represent a graph in a computer and then discusses algorithms based on searching a graph
@@ -22,7 +22,7 @@ examines methods to compute shortest paths between every pare of vertices.
 Finally, Chapter 26 shows how to compute a maximum flow of material in a flow network, which is a directed graph having
 a specified source vertex of material, a specified sink vertex, and specified capacities for the amount of material
 that can traverse each directed edge. This general problem arise in many forms, and a good algorithm for computing
-maximum flows can help solve a variety of related problems efficiently.
+maximum flows can help solve a variety of related leetcode efficiently.
 
 When we characterize the running time of a graph algorithm on a given graph G = (V, E), we usually measure the size of
 the input in terms of the number of vertices |V| and the numbers of edges |E| of the graph. That is, we describe the
