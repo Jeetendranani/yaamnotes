@@ -38,7 +38,7 @@ design question
         bottlenecks, tradeoffs
     - repair & redesign
 
-todo: problem solving skill
+problem solving skill
 
 
 walk through the interview question
