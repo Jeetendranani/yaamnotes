@@ -1,6 +1,6 @@
 """
-todo: watch cracking the facebook interview - the approach: https://vimeo.com/interviewprepsession/theapproach
-todo: watch the facebook coding  interview - problem work through: https://vimo.com/interviewprepsession/preblemwalkthrough
+watch cracking the facebook interview - the approach: https://vimeo.com/interviewprepsession/theapproach
+watch the facebook coding  interview - problem work through: https://vimo.com/interviewprepsession/preblemwalkthrough
 
 why would facebook prep you?
     - be your best
@@ -65,14 +65,14 @@ coding interview:
         - bloom filter
 
 architecture:
-    - network (IPC, TCP/IP)
-    - concurrency (threads, deadlock, starvation, consistency, coherence
-    - abstraction (understanding how os, filesystem, and database works)
-    - real world performance (relative performance ram, disk, your network, ssd)
-    - availability and reliability (durability, understanding how things can fail)
-    - data storage (ram vs durable storage, compression, byte sizes)
-    - cap theorem
-    - byte math
+    - network (IPC, TCP/IP) todo:
+    - concurrency (threads, deadlock, starvation, consistency, coherence) todo
+    - abstraction (understanding how os, filesystem, and database works) todo
+    - real world performance (relative performance ram, disk, your network, ssd) todo
+    - availability and reliability (durability, understanding how things can fail) todo
+    - data storage (ram vs durable storage, compression, byte sizes) todo
+    - cap theorem todo
+    - byte math todo
 
 The goal is figure out:
     - the general purpose and goals of their system.
