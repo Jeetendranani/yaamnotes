@@ -304,4 +304,109 @@ Design pattern in python
         - observer
         - state
 
+Design patterns - elements
+
+A design pattern attempts to record those aspects of recurring design in object oriented systems that solve a problem
+or a class of problems.
+
+All of them have the following elements:
+    - Name: A well known handle or title, which is commonly used to describe the pattern. Having standard names for
+    design patterns aids communication and increases our design vocabulary.
+
+    - context: this is the situation in which the problem arieses. A context can be generic like develop a web
+    application software, or specific like implementing resource-change notification in a shared memory implementation
+    of the publisher subscriber system.
+
+    - Problem: Describes the actual problem that teh pattern is applied for. A problem can be described in terms of its
+    forces, which are as follows:
+        - Requirements: The requirements that the solution should fulfill, for example, the publisher-subscriber
+        pattern implementation must support http.
+        - constraints: The constrains to the solution, if any, for example, the scalable peer-to-peer publisher pattern
+        should not exchange more than three messages for publishing a notification.
+        - properties: The properties of the solution which are desirable to have, for example, the solution should work
+        equally well on the windows and linux platforms.
+    - Solution: Shows the actual solution to the problem. It describes the structure and responsibilities, the static
+    relationships, and the runtime interactions (collaborations) of the elements making up the solution. A solution
+    should also discuss what force of the problem it solves, and what it doesn't. A solution should also try to
+    mention its consequences, that is, the results and trade-offs of applying a pattern.
+
+Categories of design patterns
+
+    - Creational: These patterns solve the problem associated with object creation and initialization. These are
+    problems that occur the earliest in the life cycle of problem solving with objects and classes. Take a look at
+    the following examples:
+        - The factory pattern: The "how do i make sure I can create related class instances in a repeatable and
+        predictable fashion?" question is solved by the factory class of patterns. todo
+
+        - The prototype pattern: the "what is a smart approach to instantiate an object, and then create hundreds of
+        similar objects by just copying across this one object?" question is solved by the prototype patterns. todo
+
+        - Singleton and related patterns: the "how do i make sure that any instance of a class i created is created and
+        initialized just once" or "how do i make sure that any instances of a class share the same initial state?"
+        questions are solved by the singleton and related patterns.todo
+
+    - Structure:
+        - the proxy pattern: "how do i control access to an object and its methods via wrapper, behavior on top?" todo
+        - the composite pattern: "how can i represent an object which is made of many components at teh same time using
+        the same class for representing the part and the whole - for example, a widget tree? todo
+
+    - Behavioral:
+        - using the median pattern in such case: "ensure that all the object use loose coupling to refer to each other
+        at runtime to promote runtime dynamism for interactions" todo
+        - using the observer pattern in such case: "An object wants to be notified when the sate of a resource changes,
+        but it does not want to keep polling the resource to find this out. There may be many such instances of objects
+        in the system. todo
+
+Architecture patterns
+
+    - introducing mvc
+        - model view template - django
+        - flask microfamework
+
+    - event driven programming todo
+        - chat server and client using select
+        - event-driven versus concurrent programming
+        - twisted
+            twisted chat server and client
+        - eventlet
+            eventlet chat server
+        - greenlets and gevent
+            gevent chat server
+
+    - microservices architecture: todo
+        - microservice frameworks in python
+        - microservice example
+        - microservice advantages
+
+    - pipe and filter architecture: todo
+        - pipe and filter in python - examples
+
+Software deployment in python
+
+Techniques for debugging
+
+    - Maximum subarray problem
+        - the power of print
+        - analysis and rewrite
+        - timing and optimizing the code
+    - simple debugging tricks and techniques
+        - word searcher program
+
+    - logging as a debugging technique
+        - simple application logging
+        - advanced logging - logger objects
+        - advanced logging - custom formatting and loggers
+        - advanced logging - writing to syslog
+
+    - debugging tools - using debuggers:
+        - a debugging session with pdb
+        - pdb - similar tools
+            - ipdb
+            - pdb++
+
+    - advanced debugging - tracing
+        - the trace module
+        - thr lptrace program
+        - system call tracing using strace
+
 """
