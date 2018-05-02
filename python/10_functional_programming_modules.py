@@ -15,5 +15,4 @@ the following modules are documented in this chapter:
     10.3.1. Mapping operators to functions
     10.3.2 inplace operators
 """
-"Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
-"Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
+
