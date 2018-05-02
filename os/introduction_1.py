@@ -292,6 +292,154 @@ to accept new drivers while running and install them on the fly without the need
 but is becoming much more common now. Hot-pluggable devices, such as USB and IEEE 1394 devices (discussed below), always
 need dynamically loaded drivers.
 
+Every controller has a small number of registers that are used to communicate with it. For example, a minimal disk
+controller might have registers for specifying the disk address, memory address, sector count, and direction (read or
+write). To activate the controller, the driver gets a command from the operating system, then translates it into the
+appropriate values to write into the device registers. Th collection of all the device registers form the i/o port
+space, a subject we will come back to in chapter 5.
 
+On some computers, the device registers are mapped into the operating system's address space (the addresses it can use),
+so they can be read and written like ordinary memory words. On such computers, no special i/o instructions are required
+and user programs can be kept away from the hardware by not putting these memory addresses within their reach (e.g., by
+using base and limit registers). On other computers, the device registers are put in a special i/o port space, with
+each register having a port address. On these machines, special IN and OUT instructions are available in kernel mode to
+allow drivers to read and write the registers. The former scheme eliminates the need for special i/o instructions but
+uses up some of the address space. The latter uses no address space but requires special instructions. Both systems are
+widely used.
+
+Input and output can be done in three different ways. In the simplest method, a user program issues a system call, which
+the kernel then translates into a procedure call to the appropriate driver. The driver then starts the i/o and sits in
+a tight loop continuously polling the device to see if it is done (usually there is some bit that indicates that the
+devices is still busy). When the i/o has completed, the driver puts the data (if any) where they are needed and returns.
+The operating system then returns control to the caller. This method is called busy waiting and has the disadvantage
+of typing up the CPU polling the device unit it is finished.
+
+The second method is for the driver to start the device and ask it to give an interrupt when it is finished. At that
+point the driver returns. The operating system then blocks the caller if need be and looks for other work to do. When
+the controller detects the end of the transfer, it generates an interrupt to signal completion.
+
+Interrupts are very important in operating systems, so let us examine the idea more closely. In Fig 1-11 we see a three
+step process for i/o. In step 1, the driver tells the controller what to do by writing into its device registers. The
+controller then starts teh device. When the controller has finished reading or writing the number of bytes it has been
+told to transfer, its signals the interrupt controller chip using certain bus lines in step 2. if the interrupt
+controller is ready to accept the interrupt (which it may not be if it is busy handling a higher-priority one), it
+asserts a pin on the CPU chip telling it. In step 3, In step 4, the interrupt controller puts the number of the device
+on the bus so the CPU can read it and know which device has just finished (many devices may be running at the same
+time).
+
+Once the CPU has decide to take teh interrupt, the program counter and PSW are typically then pushed onto the current
+stack and the CPU switched into kernel mode. The device number may be used as an index into part of memory to find the
+address of the interrupt handler for this device. This part of memory is called the interrupt vector. Once the interrupt
+handler (part of the driver for the interrupting device) has started, It remove the stacked program counter and PSW and
+saves them, then queries the device to learn its status. When the handler is all finished, it return to the previously
+sunning user program to the first instruction that was not yet executed. These steps are shown in Fig 1-11(b).
+
+The third method for doing i/o makes use of special hardware: a DMA (Direct Memory Access) chip that can control the
+flow of bits between memory and some controller without constant CPU intervention. The CPU sets up the DMA chip, telling
+it how many bytes to transfer, the device and memory addresses involved, and the direction, and lets it go. When the
+DMA chip is done, it causes an interrupt, which is handled as described above. DMA and i/o hardware in general will be
+discussed in more detail in chapter 5.
+
+Interrupts can (and often do) happen at highly inconvenient moments, for example, while another interrupt handler is
+running. For this reason, the CPU has a way to disable interrupts and then reenable them later. While interrupts are
+disabled, any devices that finish continue to assert their interrupt signals, but the CPU is not interrupted until
+interrupts are enabled again. If multiple devices finished while interrupts are disabled, the interrupt controller
+decides which one to let through first, usually based on static priorities assigned to each device. The highest priority
+device wins and gets to be serviced first. The others must wait.
+
+1.3.5 buses
+
+The organization of Fig 1-6 was used on minicomputers for years and also on the original IBM PC. However, as processors
+and memories got faster, the ability of the single bus (and certainly the IMB PC bus) to handle all traffic was strained
+to the breaking point. Something had to give. As a result, additional buses were added, both of faster i/o devices and
+for CPU to memory traffic. As a consequence of this evolution, a large x86 system currently looks something like Fig 1-2
+
+This system has many buses (e.g., cache, memory, PCIe, PCI, USB, SATA, and DMI), each with a different transfer rate
+and function. The operating system must be aware of all of them for configuration and management. The main bus is the
+PCIe (Peripheral Component Interconnect Express) bus.
+
+The PCIe bus was invented by Intel as a successor to the older PCI bus, which in turn was a replacement for the original
+ISA (Industry Standard Architecture) bus. Capable of transferring tens of gigabits per second, PCIe is much faster than
+its predecessors. It is also very different in nature. Up to its creation in 2004, mot buses were parallel and shared. A
+shared bus architecture means that multiple devices use the same wires to transfer data. Thus, when multiple devices
+have data to send. you need an arbiter to determine who can use the bus. In contract, PCIe makes use of dedicated, point
+to point connections. A parallel bus architecture as used in traditional PCI means that you send each word of data over
+multiple wires. For instance, in regular PCI buses, a single 32-bit number is sent over 32 parallel wires, In contrast to
+this, PCIe uses a serial bus architecture and sends all bits in a message through a single connection, known as a lane,
+much like a network packet. This is much simpler, because you do not have to ensure that all 32 bits arrive at the
+destination at exactly the same time. Parallelism is still used. Because you can have multiple lanes in parallel. For
+instance, we amy use 32 lanes to carry 32 messages in parallel. As the speed of peripheral devices like network cards
+and graphics adapters increases rapidly, the PCIe standard is upgraded every 3-5 years. For instance, 16 lanes of PCIe
+2.0 offer 64 gigabits per second. upgrading to PCIe 3.0 will give you twice that speed and PCIe 4.0 will double that
+again.
+
+Meanwhile, we still have many legacy devices for the older PCI standard. as we see in fig 1-12, these devices are hooked
+up to a separate hub processor, in the future, when we consider PCI no longer merely old, but ancient, it is possible
+that all PIC devices will attached to yet another hub that in turn connects them to teh main hub, creating a tree of
+buses.
+
+In this configuration, the CPU talks to memory over a fast DDR3 bus, to an external graphics device over PCIe and to all
+other devices via a hub over a DMI (Direct Media Interface) bus. The hub in turn connects all the other devices, using
+the Universal Serial Bus to talk to USB devices, the SATA bus to interact with ard disks and DVD drivers, and PCIe to
+transfer Ethernet frames. We have already mentioned the older PCI devices that use a traditional PCI bus.
+
+Moreover, each of the cores has a dedicated cache and a much larger cache that is shared between them. Each of these
+caches introduces another bus.
+
+The USB (Universal Serial Bus) was invented to attach all the slow i/o devices, such as the keyboard and mouse, to
+the computer. However, calling a modern USB 3.0 device humming along at 5 Gbps "slow" may not come naturally for the
+generation tht grew up with 8-mbps ISA as the main bus in the first IBM PCs USB uses a small connector with four to
+eleven wires (depending on the version) some of which supply electrical power to the USB devices or connect to ground.
+USB is a centralized bus in which a root device polls all the i/o devices every 1 msec to see if they have any traffic.
+USB 1.0 could handle an aggregate load of 12mbps, USB 2.0 increased the speed to 480mbps, and USB 3.0 tops at no less
+then 5 Gbps. Any USB device can be connected to a computer and it will function immediately, without requiring a reboot,
+something per-USB devices required, much to teh consternation of a generation of frustrated users.
+
+The SCSI (Small computer system interface) bus is a high-performance bus intended for fast disks, scanners, and other
+devices needing considerable bandwidth. Nowadays, we find them mostly in servers and workstations. They can run at up
+to 640 mbps.
+
+To work in an environment such as that of Fig 1-12, the operating system has to know what peripheral devices are
+connected to the computer and configure them. This requirement led intel and microsoft to design a PC system called plug
+and play, based on a similar concept first implemented in teh Apple Macintosh. Before plug and play, each i/o card had a
+fixed interrupt request level and fixed addresses for its i/o registers. For example, the keyboard was interrupt 1 and
+used i/o addresses 0x60 to 0x64. the floppy disk controller was interrupt 6 and use i/o addresses 0x35 to 0x37, and the
+printer was interrupt 7 and used i/o addresses 0x378 to 0x 37A, and so on.
+
+So far, so good. The trouble come in when the user brought a sound card and modern card and both happened to use, say,
+interrupt 4. They would conflict and would not work together. The solution was included DIP switches or jumpers on
+every i/o card and instruct the user to please set them to select an interrupt level and i/o device addresses tht did
+not conflict with any others in the user's system. Teenagers who devoted their lives to the intricacies of the PC
+hardware could sometimes do this without making errors. Unfortunately, nobody else could, leading to chaos.
+
+What plug and play does is have th system automatically collect information about the i/o addresses, and them tell each
+card what its numbers are. This work is closely related to booting the computer, so let us look at that. it is not
+completely trivial.
+
+1.3.6 booting the computer
+
+Very briefly, the boot process is as follows. Every PC contains a parentboard (formerly called teh motherboard before
+political correctness hit the computer industry). on the parentboard is a program called the system BIOS (Basic Input
+Output System). The BIOS contains low-level i/o software, including procedures to read the keyboard, write to the
+screen, and do disk i/o, among other things. Nowadays, it is held in a flash RAM, which is nonvolatile but which can
+be updated by the operating system when bugs are found in BIOS.
+
+When the computer is booted, the BIOS is started. It first checks to see how much RAM is installed and whether the
+keyboard and other basic device are installed and responding correctly. It starts out by scanning the PCIe and PCI
+buses to detect all the devices attached to them. if the devices present are different form when the system was last
+booted, the new devices are configured.
+
+The BIOS then determines the boot device by trying a list devices stored in the CMOS memory. The user can change this
+list by entering a BIOS configuration program just after booting. Typically, an attempt is made to boot from CD-ROM
+(or sometime USB) driver, if one is present. If that fails, teh system boots from the hard disk. The first sector from
+the boot devices is read into memory and executed. The sector contains a program that normally examines the partition
+table at the end of the boot sector to determine which partition is active. then a secondary boot loader is read in
+from that partition. This loader reads in the operating syte from teh active partition and starts it.
+
+The operating system then queries the BIOS to get the configuration information. For eah device, it checks to see if
+has the device driver. if not, it asks the user to insert a CD-ROM containing the driver (supplied by the device's
+manufacturer) or to download it from the Internet. Once it has all the device drivers, the operating system loads them
+into the kernel. Then it initializes its tables, creates whatever background processes are needed, and start up a
+login program or GUI.
 
 """
