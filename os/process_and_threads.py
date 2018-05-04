@@ -374,5 +374,161 @@ implications.
 2.2.1 thread usage
 
 Why would anyone want to have a kind of process within a process? it turns out there are several reasons for having
-these miniprocesses, called threads. let us now examine some of them. The main reason for having threads is that
+these miniprocesses, called threads. let us now examine some of them. The main reason for having threads is that in
+many applications, multiple activities are going on at once. Some of these may blocked from time to time. By
+decomposing such an application into multiple sequential threads that run in quasi-parallel, the programming model
+becomes simpler.
+
+We have seen this argument once before. It is precisely the argument for having processes. Instead, of thinking about
+interrupts, timers, and context switches, we can think about parallel processes. Only now with threads we add a new
+element: the ability for the parallel entities to share an address space and all of tis data among themselves. The
+ability is essential for certain applications, which is why having multiple processes (with their separate address
+space) will not work.
+
+A second argument for having threads is that since they are lighter weight than processes, they are easier (i.e.,
+faster) to create and destroy than processes. In many systems, creating a thread goes 10-100 times faster than creating
+a process. When the number of threads needed changes dynamically rapidly, this property is useful to have.
+
+A third reason for having threads is also a performance argument. Threads yield no performance gain when all of them
+are cpu bound, but when there is substantial computing and also substantial i/o, having threads allows these activities
+to overlap, thus speeding up the application.
+
+Finally, threads are useful on systems with multiple cpus, where real parallelism is possible. We will come back to this
+in chapter 8.
+
+It is easiest to see why threads are useful by looking at some concrete examples. As a first example, consider a word
+processor. Word processors usually display the document being created on the screen formatted exactly as it will appear
+on the printed page. In particular, all the line breaks and page breaks are in their correct and final positions, so
+that teh user can inspect them and change the document if need be (e.g., to eliminate windows and orphans - incomplete
+top and bottom lines on the page, which are considered esthetically unpleasing).
+
+Suppose that the user is writing a book. From the author's point of view, it is easiest to keep the entire book as a
+single file to make it easier to search for topics, perform global substitutions, and so on. Alternatively, each chapter
+might be a separate file. However, having every section and subsection as a separate files is real nuisance when global
+changes have to be made to the entire book, since then hundreds of files have to be individually edited. one at a time.
+For example, if proposed standard xxx is approved just before the book goes to press, all occurrences of "Draft Standard
+xxx" have to be changed to "Standard xxx" at teh last minute. If the entire book is one file, typically a single
+command can do all the substitutions. In contrast, if the book is spreads over 300 files, each one must be edited
+separately.
+
+Now consider what happens when the user suddenly deleted one sentence from 1 of an 800-page book. After checking the
+changed page for correctness, he now wants to make another change on page 600 and types in a command telling the word
+processor to go to that page (possibly by searching for a phrase occurring only there). The word processor is now forced
+to reformat the entire book up to page 600 on the spot because it does not know what the first line of page 600 will be
+until it has processed all the previous pages. There may be a substantial delay before page 600 can be displayed,
+leading to an unhappy user.
+
+Threads can help here, suppose that the word processor is written as a two threaded program. One thread interacts with
+the user and teh other handles reformatting in the background. As soon as the sentence is deleted from page 1, the
+interactive thread tells teh reformatting thread to reformat the whole book. Meanwhile, the interactive thread continues
+to listen to teh keyboard and mouse and the responds to simple commands like scrolling page 1 while the other thread is
+computing madly in the background. With a little luck, the reformatting will be completed before the user ask to see
+page 600, so it can be displayed instantly.
+
+While we are at it, why not add a third thread? Many word processors have a feature of automatically saving the entire
+file to disk every few minutes to protect the user against losing a day's work in the event of program crash, system
+crash, or power failure. The third thread can handle the disk backups without interfering with the other two. The
+situation with three threads is shown in Fig 2-7.
+
+If the program were single-threaded, then whenever a disk backup started, commands from the keyboard and mouse would be
+ignored until the backup was finished. The user would surely perceive this as sluggish performance. Alternatively,
+keyboard and mouse events could interrupt the disk backup, allowing good performance but leading to a complex interrupt
+driven programming model. With three threads, the programming model is much simpler. The first thread just interacts
+with the user. The second thread reformats the document when told to. The third thread writes to the contents of RAM to
+disk periodically.
+
+It should be clear that having three separate processes would not work here because all three threads need to operate on
+the document. By having three threads instead of three processes, they share a common memory and thus all have access
+to the to document being edited. With three processes this would be impossible.
+
+An analogous situation exists with many other interactive programs. For example, an electronic spreadsheet is a program
+that allows a user to maintain a matrix, some of whose elements are data provided by the user. Other elements are
+computed based on teh input data using potentially complex formulas. When a user changes one elements, many other
+elements may have to be recomputed. By having a background thread do the recomputation, the interactive thread can
+allow teh user to make additional changes while the computation is going on. Similarly, a third thread can handle
+periodic backups to disk on its own.
+
+Now consider yet another example of where threads are useful: a server for website, requests for pages come in and the
+requested page is send back to the client. At most websites, some pages are more commonly accessed than other pages.
+For example, Sony's home page is accessed far more than a page deep in the tree containing the technical specifications
+of any particular camera. Web servers use this fact to improve performance by maintaining a collection of heavily used
+pages in main memory to eliminate the need to go to disk to get them. Such a collection is called a cache and it used in
+many other contexts as well. We saw cpu caches in chapter 1, for example.
+
+One way to organize the web server is show in Fig 2-8(a). Here one thread, the dispatcher, reads incoming requests for
+work from the network. After examining the request, it choose an idle worker thread and hands it the request, possibly
+by writing a pointer to the message into a special word associated with each thread. The dispatcher then wakes up the
+sleeping worker, moving it from blocked state to ready state.
+
+When the worker wakes up, it checks to see if the request can be satisfied form the web page cache, to which all threads
+have access. If not, it starts a read operation to get the page from the disk and blocks until the disk operation
+completes. When the thread blocks on the disk operation, another thread is chosen to run, possibly the dispatcher, in
+order to acquire more work, or possibly another worker that is now ready to run.
+
+The model allows the server to be written as a collection of sequential threads. The dispatcher's program consists of
+an infinite loop for getting a work request and handing it off to a worker. Each worker's code consists of an infinite
+loop consisting of accepting a request from the dispatcher and checking the web cache to see if the page is present. If
+so, it is returned to the client, and the worker blocks waiting for a new request. If not, it gets teh page from the
+disk, returns it to the client, and blocks waiting for a new request.
+
+A rough outline of the code is given in Fig. 2-9. Here, as the rest of this book, True is assumed to be the constant 1.
+Also, buf and page are structures appropriate for holding a work request and a web page, respectively.
+
+while(TRUE){
+    get_next_request(&buf);
+    handoff_work(&buf);
+}
+
+while(TRUE){
+    wait_for_work(&buf);
+    look_for_page_in_cache(&buf, &page);
+    if(page_not_in_cache(&page))
+        read_page_from_disk(&buf, &page);
+    return_page(&page);
+}
+
+Consider how the web server could be written in the absence of threads. One possibility is to have it operate as a
+single thread. The main loop of the web server gets a request, examines it and carries it out to completion before
+getting the next one. While waiting for the disk, the server is idle and does not process any other incoming request.
+if the web server is running on a dedicated machine, as is commonly teh case, the cpu is simply idle while the web
+server is waiting for the disk. The net result is that many fewer requests/sec can be processed. Thus, threads gain
+considerable performance, but each thread is programmed sequentially, in the usual way.
+
+So far we have seen two possible designs: a multithreaded web server and a single-threaded web server. Suppose that
+threads are not available but the system designers find the performance loss due to single threading unacceptable. If
+a nonblocking version of the read system call is available, a third approach is possible. When a request comes in, the
+one and only thread examines it. If it can be satisfied from the cache, fine, but if not, a nonbocking disk operation
+is started.
+
+The server records teh state of the current request in a stable and then goes and gets teh next event. The next event
+may either be a request for new work or a reply from the disk about a previous operation. If it is new work, that work
+is started. If it is a reply from the disk, the relevant information is fetched from the table and the reply processesd.
+With nonblocking disk i/o, a reply probably will have to take the from of a signal or interrupt.
+
+In this design, the "sequential process" model that we had in the first two cases is lost. The state of the computation
+must be explicitly saved and restored in the table every time the server switches from  working on one request to
+another. In effect, we are simulating the threads and their stacks the hard way. A design like this, in which each
+computation have a saved state, and there exists some set of events that can occur to change the state, is called a
+finite-state machine. This concept is widely used throughout computer science.
+
+It should now be clear what threads have to offer. They make it possible to retain the idea of sequential processes
+that make blocking calls (e.g., for disk i/o) and still achieve parallelism. Blocking system calls make programming
+easier, and parallelism improves performance. The single-threaded server retains the simplicity of blocking system calls
+but gives up performance. The third approach achieves high performance through parallelism but use nonblocking calls
+and interrupts and thus is hard to program. These models are summarized in Fig. 2-10.
+
+Threads                 Parallelism, blocking system calls
+Single-threaded process No parallelism, blocking system calls
+Finite-state machine    Parallelism, nonblocking system calls interrupts
+
+A third example where threads are useful is in applications that must process very large amounts of data. The normal
+approach is to read in a block of data, process it, and then write it out again. The problem here is that if only
+blocking system calls are available, the process blocks while data are coming in and dat are going out. Having the cpu
+go idle when there is lots of computing to do is clearly wasteful and should be avoided if possible.
+
+Threads offer a solution. The process could be structured with an input thread, a processing thread, and an output
+thread. The input thread reads data into an input buffer. The processing thread takes data out of input buffer,
+processes them, and puts the results in an output buffer. The output buffer writes results bck to disk. in this way,
+input, output, and processing can all be going on the same time. Of course, the model works only if a system call blocks
+only the calling thread, not the entire process.
 """
