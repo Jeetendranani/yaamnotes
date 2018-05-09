@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+# braodcast_processes.py
+
+
+from mpi4py import MPI
+comm = MPI.COMM_WORLD
+rank = comm.rank
+if rank == 0:
+    variable_to_share = 100
+else:
+    variable_to_share = None
+
+variable_to_share = comm.bcast(variable_to_share, root=0)
+print("process = {} variable shared = {}".format(rank, variable_to_share))
