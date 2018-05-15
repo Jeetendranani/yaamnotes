@@ -84,6 +84,4 @@ suggestions:
     data on disk and how it compacts data.
     - be familiar with how databases and operating system work
     - practice on a whiteboard
-
-
 """
