@@ -69,5 +69,38 @@ Why system design interviews?
     In a nutshell, the basic idea of hiring at a level is to scale a person's ability to contribute value to the
     company's wants and needs. For that, you must exhibit your strengths by showing reasonable technical breadth.
 
-    Try to learn from the existing systems:
+    Try to learn from the existing systems: how have these been designed? another important point to be kept in mind is
+    that, the interviewer expects that candidate's analytical ability and questioning on the problem must comparable to
+    his/her experience. If you have a few years of software development experience, you are expected to have certain
+    knowledge and should avoid divulging into asking basic questions that might have been appropriate coming from a
+    fresh graduate. For that, you should prepare sufficiently ahead of time. Try to go through real projects and
+    practices, well in advanced of the interview as most question are based on real-life products, issues and
+    challenges.
+
+    leading the conversation: it is not the ultimate solution to the problem, rather the discussion process itself that
+    is important in the interview. And it is the candidate who should lead the conversation going both broad and deep
+    into the components of the problem. Hence, take the interviewer along with your during hte course of solving the
+    problem by communicating with him/her step by step as you move along.
+
+    solving by breaking down: design questions at first might look complex and intimidating. but whatever the
+    complexity level of the problem, a topo-down and modularization approach can help a lot in solving the problem.
+    Therefore, you should break the problem into modules and then tackle each of them independently. subsequently, each
+    component can be solved as a subproblem by reducing it to the level of a known algorithm. This strategy will not
+    only make the design much clearer to you and your interviewer but make evaluation much easier for the interviewer.
+    However, while doing so, keep this thing in mind that mostly the problems presented in high skill design interviewer
+    don't have the solutions. The most important thing is the way how you make progress tackling the problem, and the
+    strategies you make use of.
+
+    dealing with the bottlenecks: working on the solution, you might confront some bottlenecks. this is very normal.
+    when confronting bottlenecks, you system might require a load balancer with many machines behind it to handle the
+    user requests or teh data might be so huge that you need to distribute your database on multiple servers. it might
+    also be possible that the interviewer wants to take the interview in a particular direction. if that is the case,
+    you are supposed to move in that direction and should go deep leaving everything else aside. If you feel stuck
+    somewhere, you can ask for a hint so that you may keep going. keep in mind that each solution is a kind of
+    trade-off; hence, changing something may worson something else. here, the important things is your ability to talk
+    about these trade-offs and to measure their impact on the system keeping all the constraints and use cases in mind.
+    after finishing with your high-level design and making sure that the interviewer is ok with it, you can go for
+    making it more detailed. Usually, that means making your system scale.
+
+
 """
