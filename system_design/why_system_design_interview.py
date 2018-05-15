@@ -27,5 +27,47 @@ Why system design interviews?
     In short, system design interview is, just understanding it from interviewer's perspective. During the whole
     process, it is your discussion with the interviewer that is of core important.
 
+2. how to give system design interview?
+    there is no strictly defined process to system design interview. secondly, there are so many things inherently
+    unclear about large systems that without clarifying at least a few of them in the beginning, it would be impossible
+    to go for a solution. Any candidate who does not realize that fact would fll into the trap of quickly jumping onto
+    finding a solution.
 
+    for instance, the questions can be like:
+
+    - design a url shortening service like TinyURL
+    - how would you build a social network like facebook and implement a feature where one user receives notifications
+    when their friends 'like' the same thing as they do?
+    - how to design a ride-sharing service like uber, which connects passengers who need a ride with drivers who have a
+    car.
+
+    any candidate who does not have experience in building systems might think such question grossly unfair. On top of
+    that, there generally isn't any one correct answer to such questions. The way you are answering the question would
+    sufficiently tell upon your professional competence and background experience. That is the thing which the
+    interviewer will evaluate you on.
+
+    since the questions are intentionally weakly defined, jumping into designing the solution immediately without
+    understanding them properly is liable to et you in trouble. Spend a few minutes questioning the interviewer to
+    comprehend the full scope of teh system. Never assume things that are not explicitly started. For instance, the
+    "url shortening service" could be serving just a few thousand users, but each could be sharing millions of urls. it
+    could also mean to handle millions of clicks on the shortened url or just a few dozens. the service may also require
+    providing extensive statistics about each shortened url, or statistics may not be a requirement at all. therefore,
+    don't forget to make sure you gather all teh requirements as teh interviewer would not be listing them out for you
+    in advance.
+
+    the point i want to make is htat teh main difference between design interviews and the rest is that you are not
+    presented with the full detail of the problem at the outset. rather you are required to scale the breadth and depth
+    of a blurred and indistinct problem. you are supposed to take teh details and interrogate the crux of the issues by
+    putting judicious questions yourself. your questions and points of interest to clarify the problem presented go a
+    long way in evaluating your ability and competence as an assert to the company.
+
+    in design and architecture interviews the problems presented are quite big. they definitely cannot be solved in 40
+    minutes time implying that teh objective is to test teh technical depth and diversity teh interviewee invokes
+    during the interview. That also speaks strongly for your would be 'level' in the  company. And your level in the
+    company should come from your analytical ability to sort out hte problem besides your ability to work in a team
+    (your behavioral and background side of the interview), and your capacity to perform as a string technical leader.
+    In a nutshell, the basic idea of hiring at a level is to scale a person's ability to contribute value to the
+    company's wants and needs. For that, you must exhibit your strengths by showing reasonable technical breadth.
+
+    Try to learn from the existing systems:
 """
