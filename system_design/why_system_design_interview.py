@@ -102,5 +102,29 @@ Why system design interviews?
     after finishing with your high-level design and making sure that the interviewer is ok with it, you can go for
     making it more detailed. Usually, that means making your system scale.
 
+3. Summary
 
+    solving system design questions could be broken down into three steps:
+
+    - scoping the problem: Dont' make assumptions; ask clarifying questions to understand the constraints and use cases.
+    - sketching up an abstract design illustrating the building blocks of the system and teh relationships between them.
+    - identifying and addressing the bottlenecks by using the fundamental principles of scalable system design.
+
+4. conclusion
+
+    design interviews are formidable, open ended problems that connot be solved in the allotted time. Therefore, you
+    should try to understand what your interviewer intends to focus on and spend sufficient time on it. Be well aware
+    of the fact that the discussion on system design problem could go in different directions depending on the
+    preferences of the interviewer. The interviewers might be unwilling to see how you create a high-level architecture
+    covering all aspects of the system or they could be interested in looking for specific areas and diving deep into
+    them. this means that you must deal with the situation strategically as there are chances of even the good
+    candidates failing the interview, not because they dont' have the knowledge, but because they lack the ability to
+    focus on the right thins while discussing the problem.
+
+    If you have no idea how to solve these kinds of problems, you can familiarize yourself with the common patterns of
+    system design by reading diversely from the blogs, watching videos of tech talks from conferences. It is also
+    advisable to arrange discussions and even moc interviews with experienced engineers at big tech companies.
+
+    Remember there is no ONE right answer to the question because any system can be built in different ways. The only
+    thing that is going to be looked into is your ability to rationalize ideas and inputs.
 """
