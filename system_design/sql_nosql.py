@@ -44,5 +44,67 @@ that entity; for example, if we are storing a car entity in a table, different c
 noSQL database have different data storage models. The main ones are key-value, document, graph and cloumnar. We will
 discuss difference between these databases below.
 
-Schema: In SQL,
+Schema: In SQL, each record confirms to a fixed schema, meaning the columns must be decide and chosen before data entry
+and each row must have data for each column. The schema can be altered later, but it involves modifying the whole
+database and going offline.
+
+Whereas in NoSQL, schemas are dynamic. columns can be added on the fly, and each 'row' (or equivalent) doesn't have to
+contains data for each 'column'.
+
+Querying: SQL databases uses SQL (structured query language) for defining and manipulating the data, which is very
+powerful. In NoSQL database, queries are focused on a collection of documents. Sometimes it is also called UnQL
+(Unstructured Query Language). Different databases have different syntax for using UnQL.
+
+Scalability: In most common situations, SQL databases are vertically scalable, i.e., by increasing the horsepower of the
+hardware (higher memory, CPU, etc.), which can get very expensive. It is possible to scale a relational database across
+multiple servers, but this is a challenging and time-consuming process.
+
+On the other hand, NoSQL databases are horizontally scalable, meaning we can add more server easily in our NoSQL
+databases infrastructure to handle large traffic. Any cheap commodity hardware or cloud instances can host NoSQL
+databases, thus making it a lot more cost-effective than vertical scaling. A lot of NoSQL technologies also distribute
+data across servers automatically.
+
+Reliability or ACID compliancy (Atomicity, consistency, isolation, durability): The vast majority of relational database
+are ACID compliant. So, when it comes to data reliability and safe guarantee of performing transactions, SQL databases
+are still the better bet.
+
+Most of the NoSQL solutions sacrifice ACID compliance for performance and scalability.
+
+SQL vs. NoSQL - which one to use?
+
+When it comes to database technology, there's no one size fits all solution. That's why many businesses rely on both
+relational and non-relational databases for different needs. Even as NoSQL databases are gaining popularity for their
+speed and scalability, there are still situations where a highly structured SQL database may perform better; choosing
+the right technology hinges on the use case.
+
+Reasons to use SQL databases
+
+Here are a few reasons to choose a SQL databases;
+
+1. We need to ensure ACID compliance. ACID compliance reduces anomalies and protects the integrity of your database by
+prescribing exactly how transactions interact with the database. Generally, NoSQL databases sacrifice ACID compliance
+for scalability and processing speed, but for many e-commerce and financial applications, an ACID compliant database
+remains teh preferred option.
+
+2. your dta is structured and unchanging. If your business is not experiencing massive growth that would require more
+servers and if you're only working with data that's consistent, then they may be no reason to use a system designed to
+support a variety of data types and high traffic volume.
+
+When all the other components of our application are fast and seamless, NoSQL databases prevent data from being the
+bottleneck. Big data is contributing to a large success for NoSQL databases, mainly because it handles dta differently
+than the traditional relational databases. A few popular examples of NoSQL databases are MongoDB, CouchDB, Cassantra,
+and HBase.
+
+1. Storing large volumes of data that often have little to no structure. A NoSQL database sets no limits on the types
+of data we can store together and allows us to add different new types as the need changes. With document-based
+databases, you can store data in one place without having to define what "types" of data those are in advance.
+
+2. Making the most of cloud computing and storage. Could based storage is an excellent cost-saving solution but requires
+data to be easily spread across multiple servers to scale up. Using commodity (affordable, smaller) hardware on site or
+in the cloud saves you the hassle of additional software, and NoSQL databases like Cassandra are designed to be scaled
+across multiple data centers out of the box without a lot of headaches.
+
+3. Rapid development. NoSQL is extremely useful for rapid development as it doesnt need to be prepped ahead of time. If
+you'are working on quick iterations of your system which require making frequent updates to the data structure without
+a lot of downtime between versions, a relational database will slow you down.
 """
