@@ -1,0 +1,31 @@
+"""
+- System design basic
+    - Why system design interviews?
+    - System design basics
+    - Consistent hashing
+    - CAP theorem
+    - Load balancing
+    - Caching
+    - Data partitioning
+    - Indexes
+    - Proxies
+    - Queues
+    - Redundancy and replication
+    - SQL or noSQL
+
+- System design problems
+    - System design interview: A step by step guide
+    - Designing a URL shortening service like TinyURL
+    - Designing Pastebin
+    - Design Instagram
+    - Designing Dropbox
+    - Designing Facebook Message
+    - Designing Twitter
+    - Designing Youtube
+    - Designing Typeahead suggestion
+    - Designing Twitter search
+    - Designing a web crawler
+    - Designing Facebook's newsfeed
+    - Designing Yelp
+    - Designing uber backend
+"""
