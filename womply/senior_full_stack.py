@@ -1,6 +1,25 @@
 """
+    Two terms thrown around a lot in the web industry are front-end and back-end. It can be a little frustrating since
+    the difference between the front-end and back-end isnt' always perfect clear. They'are terms often used to describe
+    aspects of the web industry. The front-end is also referred to as the client-side and is sometimes considered "web
+    design". The back-end of the web industry is often called the server-side. Often when someone says they're a "web
+    developer" they're saying they work on the back-end of sites. While that explanation seems simple, the line between
+    the two is often blurry. Here are some basic guidelines to help tell teh difference between the front-end and
+    back-end or at least be able to begin to understand what someone does when they say they're a "front-end developer".
+
 front-end
+    The front-end is everything involved with what the user sees, including design and some language like html and css.
+    most of the web courses created at digital tutors will be for the front-end and focused on design, but there are
+    already a bunch of frot-end specific courses available at pluresight as well.
+
 back-end
+    The back-end, or the server-side, is basically how the site works, updates and changes. This refers to everything
+    the user can't see in hte browser, like databases and servers. Usually people who work on the backend are called
+    programmer or developers. Back end developers are mostly worried about thing like security, structure and content
+    management. They usually know and can use languages like thml and css, but that's definitely not their focus.
+    Backend developers, or at least backend development, is required to create a dynamic site, A dynamic site is a site
+    is a site that's constantly changeing and updated in real-time. Most sites are dynmic sites, as oppsoed to static
+    sites. Facebook, google Maps and this blog are all considered dynamic sites.
 
 semantic html
     What is semantic html
