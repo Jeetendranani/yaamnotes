@@ -15,17 +15,17 @@
 
 - System design problems
     - System design interview: A step by step guide
-    - Designing a URL shortening service like TinyURL
-    - Designing Pastebin
-    - Design Instagram
-    - Designing Dropbox
-    - Designing Facebook Message
-    - Designing Twitter
-    - Designing Youtube
-    - Designing Typeahead suggestion
-    - Designing Twitter search
-    - Designing a web crawler
-    - Designing Facebook's newsfeed
-    - Designing Yelp
-    - Designing uber backend
+    - 1. Designing a URL shortening service like TinyURL
+    - 2. Designing Pastebin
+    - 3. Design Instagram
+    - 4. Designing Dropbox
+    - 5. Designing Facebook Message
+    - 6. Designing Twitter
+    - 7. Designing Youtube
+    - 8. Designing Typeahead suggestion
+    - 9. Designing Twitter search
+    - 10. Designing a web crawler
+    - 11. Designing Facebook's newsfeed
+    - 12. Designing Yelp
+    - 13. Designing uber backend
 """
