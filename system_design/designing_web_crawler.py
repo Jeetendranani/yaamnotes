@@ -319,6 +319,6 @@ Difficulty Level: Hard
     Since bot traps only give internal links credits and they rarely get credit from the outside, they will continually
     leak credits (from taxation) to the lambda page. the lambda page will distribute that credits out to all teh pages
     in the database evenly, and upon each cycle, the bot trap page will lose more and more credits until it has so
-    little credits that it almos tnever gets crawled again. This will not happen with good pages because they often get
-    gredits from backlinks found on the other pages.
+    little credits that it almost never gets crawled again. This will not happen with good pages because they often get
+    credits from backlinks found on the other pages.
 """
